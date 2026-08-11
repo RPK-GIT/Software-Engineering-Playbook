@@ -68,7 +68,11 @@ through the pin.
 4. **Copy** the required templates: README, PR template, `CLAUDE.md` (REPO-001); ADR/threat-model/
    runbook/postmortem templates are used as their triggers fire.
 5. **Configure validation**: wire the `ci`-tagged checks for the profile into the project's CI
-   (CI-002); tooling choices are project ADRs.
+   (CI-002); tooling choices are project ADRs. Note the boundary: the playbook's own
+   `tools/validate.py` validates *the playbook repository* and is not installed in application
+   repositories — an application's compliance CI is built from its stack's tooling
+   (formatter, linter, type checker, tests, coverage, scanners) mapped from the
+   [enforcement matrix](enforcement-matrix.md).
 6. **Run** [checklists/new-repository.md](../checklists/new-repository.md) to completion.
 7. **Initialize** the project `decisions/` directory and record the stack-selection ADR(s) (DOC-003).
 8. **Adopt the Definition of Done** — [checklists/definition-of-done.md](../checklists/definition-of-done.md)

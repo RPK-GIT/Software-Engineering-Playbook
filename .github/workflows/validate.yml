@@ -2,9 +2,9 @@
 # - permissions: contents:read only - validation needs nothing else; an untrusted PR
 #   never obtains write privileges (runs via `pull_request`, never `pull_request_target`).
 # - No secrets are used or available to these jobs.
-# - No third-party actions beyond actions/checkout; Python is runner-preinstalled.
-#   Hardening backlog (tracked in ADR-0002): pin actions by commit SHA once the repo
-#   has external contributors.
+# - No third-party actions beyond actions/checkout, which is pinned by commit SHA
+#   (v4.2.2), verified against the upstream tag - completing the ADR-0002 hardening
+#   backlog item. Python is runner-preinstalled.
 name: playbook-validate
 
 on:
@@ -21,7 +21,7 @@ jobs:
     name: Governance invariants (V1-V15)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Run validator (blocking checks)
         run: python3 tools/validate.py
@@ -37,7 +37,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Validate release (tag/version consistency + all invariants)
         env:
