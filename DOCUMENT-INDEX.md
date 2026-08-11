@@ -10,9 +10,9 @@
 
 | Document | Class | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|---|
-| `README.md` | Governance | 1 | Yes | 📋 | Human entry point: classes, precedence, navigation |
-| `CLAUDE.md` | Instrument | 1 | Yes | 📋 | AI agent entry point; routing only, owns no rules |
-| `GLOSSARY.md` | Governance | 1 | Yes | 📋 | One definition per term any rule depends on |
+| `README.md` | Governance | 1 | Yes | ✅ | Human entry point: classes, precedence, navigation |
+| `CLAUDE.md` | Instrument | 1 | Yes | ✅ | AI agent entry point; routing only, owns no rules |
+| `GLOSSARY.md` | Governance | 1 | Yes | ✅ | One definition per term any rule depends on |
 | `PLAYBOOK-ARCHITECTURE.md` | Governance | — | Yes | ✅ | Information architecture (authoritative) |
 | `PLAYBOOK-ROADMAP.md` | Governance | — | Yes | ✅ | Build order, phase exit criteria, status |
 | `DOCUMENT-INDEX.md` | Governance | — | Yes | ✅ | This inventory |
@@ -22,22 +22,22 @@
 
 | Document | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|
-| `governance/how-to-use.md` | 1 | Yes | 📋 | Adoption: inheritance, version pinning, project profiles |
-| `governance/change-process.md` | 1 | Yes | 📋 | RFC flow, playbook versioning, ownership, review cadence |
-| `governance/waivers.md` | 1 | Yes | 📋 | Exception path for MUST rules: approval, format, expiry |
+| `governance/how-to-use.md` | 1 | Yes | ✅ | Adoption: inheritance, version pinning, project profiles |
+| `governance/change-process.md` | 1 | Yes | ✅ | RFC flow, playbook versioning, ownership, review cadence, self-validation capabilities |
+| `governance/waivers.md` | 1 | Yes | ✅ | Exception path for MUST rules: approval, format, expiry, register |
 | `governance/enforcement-matrix.md` | 2 | Yes | 📋 | Every MUST → CI check or named human gate |
 
 ## principles/
 
 | Document | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|
-| `principles/engineering-principles.md` | 1 | Yes | 📋 | The 10–15 principles all standards derive from |
+| `principles/engineering-principles.md` | 1 | Yes | ✅ | The 12 principles (P-1…P-12) all standards derive from |
 
 ## standards/ (rule ID prefix in parentheses)
 
 | Document | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|
-| `standards/_rule-format.md` | 1 | Yes | 📋 | Meta-standard: rule grammar — IDs, levels, enforcement, applicability |
+| `standards/_rule-format.md` (RULE) | 1 | Yes | ✅ | Meta-standard: rule grammar — IDs, levels, enforcement, applicability registries |
 | `standards/architecture.md` (ARCH) | 2 | Yes | 📋 | Layering, boundaries, dependency direction, coupling |
 | `standards/coding.md` (CODE) | 2 | Yes | 📋 | Language-agnostic construction rules, dependency selection |
 | `standards/application.md` (APP) | 2 | Yes | 📋 | Cross-platform runtime: config, errors, flags, jobs, i18n |
@@ -59,15 +59,15 @@
 
 | Document | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|
-| `agents/ai-agent-standards.md` (AGENT) | 6 | Yes | 📋 | Agent operating rules: reading order, deviation protocol, stop conditions |
-| `agents/context-map.md` | 1 (seed), 6 (complete) | Yes | 📋 | Task type × project profile → files to load |
+| `agents/ai-agent-standards.md` (AGENT) | 1 (seed), 6 (complete) | Yes | 🚧 | Agent operating rules AGENT-001…012: discovery, conflicts, waivers, deviations, verification |
+| `agents/context-map.md` | 1 (seed), 6 (complete) | Yes | 🚧 | Task type × project profile → files to load |
 
 ## decisions/
 
 | Document | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|
-| `decisions/README.md` | 1 | Yes | 📋 | ADR index; org-level vs project-level scoping rules |
-| `decisions/0001-record-architecture-decisions.md` | 1 | Yes | 📋 | Founding meta-ADR adopting the ADR practice |
+| `decisions/README.md` | 1 | Yes | ✅ | ADR index; org-level vs project-level scoping rules |
+| `decisions/0001-record-architecture-decisions.md` | 1 | Yes | ✅ | Founding meta-ADR adopting the ADR practice |
 
 ## checklists/ (views — cite rule IDs only)
 
@@ -84,8 +84,8 @@
 
 | Document | Phase | Status | Instantiates |
 |---|---|---|---|
-| `templates/adr.md` | 1 | 📋 | ADR practice (decisions/) |
-| `templates/rfc.md` | 1 | 📋 | Standard-change proposals (change-process) |
+| `templates/adr.md` | 1 | ✅ | ADR practice (decisions/) |
+| `templates/rfc.md` | 1 | ✅ | Standard-change proposals (change-process) |
 | `templates/pull-request.md` | 2 | 📋 | GIT/DOC rules, deviations section |
 | `templates/readme.md` | 2 | 📋 | REPO/DOC rules |
 | `templates/claude-md.md` | 2 (finalized 6) | 📋 | App-repo agent entry: profile, pinning, ADR links |
@@ -96,5 +96,5 @@
 ---
 
 **Totals:** 46 active documents (6 root + 4 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
-Existing today: 4 (this index, architecture, roadmap, design). Next up: Phase 1 — see
+**Phase 1 complete (2026-08-11):** 16 documents exist (14 ✅ + 2 🚧 seeds). Next up: Phase 2 — see
 [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).

@@ -4,7 +4,7 @@
 > [PLAYBOOK-ARCHITECTURE.md](PLAYBOOK-ARCHITECTURE.md); the full inventory with per-document status is
 > [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md).
 >
-> **Current phase: Phase 1 not started** (information architecture complete as of 2026-08-11).
+> **Current phase: Phase 1 COMPLETE (2026-08-11). Next: Phase 2 — Core Engineering Standards.**
 
 ## Sequencing logic
 
@@ -46,6 +46,12 @@ with reduced human review.
 | `decisions/README.md` + ADR-0001 | ADR practice adopted via its own first ADR |
 | `templates/adr.md`, `templates/rfc.md` | Needed by the processes above |
 | `agents/context-map.md` (seed) | Navigation stub, completed in Phase 6 |
+| `agents/ai-agent-standards.md` (seed) | AGENT-001…012: binding agent behavior from day one; completed in Phase 6 |
+
+*Scope note: the agent-standards seed was pulled forward from Phase 6 during Phase 1 execution —
+the approved Phase 1 requirements (conflict resolution, waiver handling, deviation recording,
+compliance verification) are rules, and rules must live in a standard (RULE-007), not in routing
+documents.*
 
 **Exit criteria:** rule grammar approved; change and waiver processes have named owners; an agent landing
 in this repo can find the right document for any existing content.
@@ -122,7 +128,7 @@ specified pipeline check (implementation may still be pending in app repos).
 
 | Deliverable | Notes |
 |---|---|
-| `agents/ai-agent-standards.md` | AGENT-xxx rules: reading order, deviation protocol, stop conditions |
+| `agents/ai-agent-standards.md` (complete) | Extend the Phase 1 seed (AGENT-001…012) with autonomy levels and lessons from real usage |
 | `agents/context-map.md` (complete) | Full task-type × profile matrix, tuned from real usage |
 | `templates/claude-md.md` (finalize) | Profile declaration format locked |
 | Playbook self-CI | Link integrity, rule-ID uniqueness, checklist-citation validity, orphaned-rule detection (open decision #5) |
