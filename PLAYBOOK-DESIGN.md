@@ -1,7 +1,10 @@
 # Engineering Playbook — Repository Design & Execution Plan
 
-> Status: Proposed design, awaiting approval. Once approved, this file moves to `governance/roadmap.md`.
-> Date: 2026-08-11
+> **Status: SUPERSEDED (2026-08-11).** The authoritative information architecture is now
+> [PLAYBOOK-ARCHITECTURE.md](PLAYBOOK-ARCHITECTURE.md); the build order is [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).
+> This file is retained as design history only — where it differs from PLAYBOOK-ARCHITECTURE.md, that document wins
+> (the differences are listed in its §9).
+> Original date: 2026-08-11
 
 ## 1. Design philosophy
 
