@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && git add -A && { git diff --cached --quiet || git commit -q -m \"Auto-sync: update playbook\"; } && git push -q origin main 2>/dev/null || true",
+            "timeout": 60,
+            "statusMessage": "Syncing playbook to GitHub..."
+          }
+        ]
+      }
+    ]
+  }
+}
