@@ -60,10 +60,11 @@ deletion ([P-11](../principles/engineering-principles.md)), and validation tooli
 
 ## 5. Playbook self-validation — required capabilities
 
-Per the approved Phase 1 decision, this section defines **capabilities and acceptance criteria
-only**; technology selection is a Phase 6 decision.
+This section defines the capabilities and acceptance criteria. The implementing toolchain was
+selected in Phase 6 ([ADR-0002](../decisions/0002-github-actions-for-playbook-self-ci.md)):
+`tools/validate.py` plus the enforcement-matrix drift check, run locally and by repository CI.
 
-The playbook's own CI must be able to verify, on every PR to this repository:
+The playbook's own CI verifies, on every push, pull request, and release tag:
 
 | # | Capability | Acceptance criterion |
 |---|---|---|
@@ -76,6 +77,17 @@ The playbook's own CI must be able to verify, on every PR to this repository:
 | V7 | Citation integrity | Every rule ID cited anywhere resolves to an existing Active or Deprecated rule |
 | V8 | Enforcement-matrix completeness | Every Active `ci`/`review` MUST appears in the matrix (RULE-006; active from Phase 2) |
 | V9 | Index consistency | Every file in the repo appears in `DOCUMENT-INDEX.md` and every ✅ entry exists on disk |
+| V10 | Numeric policy inventory | Accepted and pending policy blocks are enumerated (informational) |
+| V11 | Version consistency | The adoption template's pinned version is well-formed; on a release tag, it equals the tag |
+| V12 | Mobile trigger consistency | While `standards/mobile.md` is a stub, no MOB rules exist anywhere |
+| V13 | Context-map coverage | Every rule-bearing document is routed from `agents/context-map.md` |
+| V14 | Prefix registry consistency | Every registered prefix's owning document exists on disk |
+| V15 | Policy block well-formedness | Proposed policies carry the owner-approval marker; accepted policies carry a date |
 
-Until Phase 6 selects tooling, these checks are run ad hoc (scripted or manual) before each merge,
-and a failed check blocks the merge exactly as CI would.
+**Enforcement layers** (consistent with ADR-0002): (1) the self-CI *validates* these invariants —
+deterministic MUST-backed checks fail the run; (2) pull requests execute the validation workflow;
+(3) *structural merge enforcement* — required status checks and branch protection — is a separate
+layer that is **not yet enabled**: the current single-maintainer bootstrap state permits direct
+pushes to `main`, with validation run locally before each push. Enabling branch protection with
+the required validation check is the defined governance action for moving beyond bootstrap
+(first external or second regular contributor).

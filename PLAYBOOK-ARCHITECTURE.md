@@ -350,13 +350,18 @@ Outcome of the critical review; the design document remains as history with a su
 11. **Re-phased the roadmap** to the six-phase model in [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md), with a
     provisional agent layer in Phase 1 rather than leaving agents unnavigated until the final phase.
 
-## 10. Open decisions (need owner approval)
+## 10. Open decisions — all since resolved
 
-1. **Playbook versioning scheme** — semantic versioning with git tags is proposed
-   (MAJOR = a MUST added/changed, MINOR = new SHOULD/document, PATCH = editorial); confirm before Phase 1.
-2. **Waiver authority** — who may approve a MUST waiver (single named owner vs. role)? Blocks `governance/waivers.md`.
-3. **Coverage floors and complexity limits** — numeric values (e.g., line coverage %) are policy choices,
-   not derivable; needed when `testing.md`/`coding.md` are authored (Phase 2).
-4. **Mobile trigger** — mobile.md stays a stub until a mobile project is approved; confirm this is acceptable.
-5. **Language of enforcement tooling** — the playbook's self-CI (link/ID integrity) needs a small toolchain
-   choice eventually; deferred to Phase 6, flagged now because it is the playbook's only technology decision.
+Preserved as written for design history; every item was decided during phase execution:
+
+1. **Playbook versioning scheme** — accepted 2026-08-11: SemVer via annotated git tags
+   ([governance/change-process.md](governance/change-process.md) §2).
+2. **Waiver authority** — accepted 2026-08-11: the Playbook Owner / Principal Architect *role*,
+   holder assignable later by governance decision ([governance/waivers.md](governance/waivers.md) §1).
+3. **Coverage floors and complexity limits** — accepted 2026-08-11 as SHOULD-level policies
+   (CODE-015, TEST-015; accepted-policy blocks in [coding.md](standards/coding.md) /
+   [testing.md](standards/testing.md)).
+4. **Mobile trigger** — confirmed: stub until an accepted mobile-project ADR
+   ([standards/mobile.md](standards/mobile.md)).
+5. **Self-CI toolchain** — decided in Phase 6:
+   [ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md).

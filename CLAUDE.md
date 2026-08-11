@@ -10,8 +10,9 @@ documents. This file routes; it defines no rules (RULE-007).
 2. Load documents per [agents/context-map.md](agents/context-map.md) — reading order,
    always-applicable set, conditional sets.
 3. Your binding behavior is defined in [agents/ai-agent-standards.md](agents/ai-agent-standards.md)
-   (AGENT-001…AGENT-012): stricter reading on conflicts, stop on mandatory-rule ambiguity, never
-   approve waivers, record deviations, verify before claiming done, surface unresolved questions.
+   (AGENT-001…AGENT-021): stricter reading on conflicts, stop on mandatory-rule ambiguity, never
+   approve waivers, record deviations, verify before claiming done, surface unresolved questions,
+   and the production/playbook integrity prohibitions.
 
 ## If you are editing the playbook itself
 

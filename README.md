@@ -3,11 +3,15 @@
 The single source of truth for how we build, ship, and run production software — across projects,
 platforms, and technology stacks, consumable by humans and AI coding agents alike.
 
-**Status: COMPLETE — v4.0.0, all six phases done; maintenance mode.** 263 rules across 17
-standards; backend/API/service/library/web development fully supported; mobile trigger-gated.
-Self-CI enforces the playbook's own governance invariants on every change
-([ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md)). Full status, guarantees, and
-limitations: [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md) "Final status".
+**Status: COMPLETE — all six phases done; maintenance mode.** Latest release: **v4.0.0** (the
+immutable published baseline — subsequent maintenance commits on `main` are not part of that tag
+and roll up into the next release per [change-process](governance/change-process.md) §2). 263
+rules across 17 standards; backend/API/service/library/web development fully supported; mobile
+trigger-gated. Self-CI *validates* the playbook's governance invariants on every push, PR, and
+release tag ([ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md)); structural merge
+enforcement via branch protection is a planned post-bootstrap governance action, not yet enabled
+(change-process §5). Full status, guarantees, and limitations:
+[PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md) "Final status".
 
 ## How this repository is organized
 

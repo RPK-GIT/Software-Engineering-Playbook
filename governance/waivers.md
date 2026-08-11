@@ -18,7 +18,8 @@ Architect**. There are no other approvers and no delegation.
 Developers and AI coding agents **may**: identify a potential need for a waiver, document the
 justification, identify the affected standards and rule IDs, and propose compensating controls.
 They **may not** approve a waiver — an AI agent granting or assuming a waiver is itself a
-violation (see AGENT-006 in [agents/ai-agent-standards.md](../agents/ai-agent-standards.md)).
+violation (see AGENT-007 in [agents/ai-agent-standards.md](../agents/ai-agent-standards.md);
+drafting a request for human decision is permitted per AGENT-008).
 
 Rules whose Exceptions field is `none` cannot be waived at all, by anyone.
 
@@ -40,8 +41,8 @@ Every approved waiver record contains **all** of the following:
 
 ## 3. Process
 
-1. **Request.** The requester (human or AI agent) prepares the record above, minus approval fields,
-   in the PR or ADR that needs the exception.
+1. **Request.** The requester (human, or AI agent per AGENT-008) prepares the record above, minus
+   approval fields, in the PR or ADR that needs the exception.
 2. **Decision.** The Playbook Owner approves, narrows, or rejects. Only the Owner fills the
    approval fields.
 3. **Record.** Approved waivers are entered in the register below (the auditable, single source of

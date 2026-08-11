@@ -76,7 +76,9 @@ the approved Phase 1 requirements (conflict resolution, waiver handling, deviati
 compliance verification) are rules, and rules must live in a standard (RULE-007), not in routing
 documents.*
 
-**Exit criteria:** rule grammar approved; change and waiver processes have named owners; an agent landing
+**Exit criteria:** rule grammar approved; change and waiver processes have explicitly defined
+ownership roles (the role holder may be assigned later through a governance decision/ADR — no
+person is required at this stage); an agent landing
 in this repo can find the right document for any existing content.
 
 ## PHASE 2 — Core Engineering Standards
