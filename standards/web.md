@@ -269,15 +269,20 @@ Content Security Policy is governed separately by WEB-018 because it cannot be b
 Applications add further headers as their threat model requires; this table is the floor, not the
 ceiling.
 
-## 3. Proposed policy values (pending approval — not yet binding)
+### WEB-029: A project performance budget departing from the accepted default values MUST be recorded in an ADR with rationale and measurement methodology.
 
-**PROPOSED POLICY — default performance budgets (would give WEB-010 default values)**
-- **Value:** at the 75th percentile on production-representative conditions: Largest Contentful Paint ≤ 2.5 s, Interaction to Next Paint ≤ 200 ms, Cumulative Layout Shift ≤ 0.1; initial-route JavaScript ≤ 200 KB compressed
-- **Reason:** the first three are the externally maintained Core Web Vitals "good" thresholds — adopted by reference, not invented, and updated when the external definition updates; the JS budget is the one locally chosen number, set where mid-range mobile hardware keeps parse/execute cost tolerable
-- **Risk of too strict:** teams burn time optimizing below human-perceptible differences, or route around the gate
-- **Risk of too loose:** budgets stop shaping architecture decisions (rendering strategy, dependency weight) which are the real lever
-- **Scope:** `web` profile; measured in CI via lab tooling per project (measurement tool is a project ADR); per-route overrides allowed with recorded justification
-- **Status:** REQUIRES PLAYBOOK OWNER APPROVAL
+- **Level:** MUST
+- **Enforcement:** review
+- **Applies to:** web
+- **Rationale:** Accepted policy (2026-08-11) distinguishes three tiers: the *mechanism* is mandatory (WEB-010), the *values* below are defaults, and a project-specific value is legitimate — but only as a recorded, justified decision, never as silent drift ([P-2](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
+## 3. Accepted policy values
+
+**ACCEPTED POLICY — web performance targets (2026-08-11, Playbook Owner; mechanism WEB-010, deviations WEB-029)**
+- **Approved targets** (75th percentile, production-representative conditions): Largest Contentful Paint ≤ 2.5 s · Interaction to Next Paint ≤ 200 ms · Cumulative Layout Shift ≤ 0.1 — the externally maintained Core Web Vitals "good" thresholds, adopted by reference.
+- **JavaScript budget:** every web project defines an initial-route JavaScript budget (mandatory via WEB-010). The **default recommendation is 200 KB** compressed — deliberately *not* an unconditional global mandate. A project may adopt a different budget through an ADR justified by architecture and requirements, including rationale and measurement methodology (WEB-029).
+- **Terms of acceptance:** mandatory = a budget is defined and CI-verified; default = 200 KB initial-route JS; project-specific = a different value via ADR.
 
 ## Interaction with other standards
 

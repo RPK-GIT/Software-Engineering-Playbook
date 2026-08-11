@@ -63,6 +63,15 @@
 - [ ] User HTML sanitized; CORS origins enumerated — WEB-021, WEB-025
 - [ ] i18n rules applied where requirements include localization — WEB-026, WEB-027
 
+## When the change touches pipeline, infrastructure, or deployment (Phase 5)
+
+- [ ] Pipeline changes reviewed like code; required checks still complete per matrix — REPO-009, CI-002
+- [ ] Infrastructure changes as reviewed IaC; no sensitive state in the repo — INFRA-001, INFRA-004
+- [ ] Migrations wired into the deployment sequence; rollback path still executable — CI-009, CI-008
+- [ ] New resources attributed to an owner; resource bounds declared — INFRA-027, INFRA-015
+- [ ] Runbook updated if alerts or failure modes changed — OPS-004, OPS-005
+- [ ] Production-affecting changes explicitly flagged for human authorization — AGENT-017
+
 ## Agents (and honest humans)
 
 - [ ] Deviations from recommended rules recorded under `## Standards deviations` — AGENT-009

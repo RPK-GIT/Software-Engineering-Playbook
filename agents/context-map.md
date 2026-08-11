@@ -41,8 +41,10 @@ stable from day one; until they exist, the engineering principles plus project A
 | Auth, secrets, PII, uploads, external surface | [security.md](../standards/security.md) §2 triggers → [checklists/security-review.md](../checklists/security-review.md); threat model per SEC-027 → [templates/threat-model.md](../templates/threat-model.md) | ✅ |
 | Browser UI | [standards/web.md](../standards/web.md) | ✅ |
 | Mobile UI | [standards/mobile.md](../standards/mobile.md) — stub; `mobile` profile may not be declared until its activation trigger fires | 🧊 stub |
-| Pipelines, releases, environments | `standards/ci-cd.md`, `standards/infrastructure.md` | Phase 5 |
-| Incidents, runbooks, on-call artifacts | `standards/operations.md`, `checklists/incident-response.md` | Phase 5 |
+| Pipelines, releases, deployment, environments | [standards/ci-cd.md](../standards/ci-cd.md), [standards/infrastructure.md](../standards/infrastructure.md) | ✅ |
+| Infrastructure as code, containers, backup/DR, cost | [standards/infrastructure.md](../standards/infrastructure.md) | ✅ |
+| Incidents, runbooks, on-call artifacts | [standards/operations.md](../standards/operations.md), [checklists/incident-response.md](../checklists/incident-response.md), [templates/runbook.md](../templates/runbook.md), [templates/postmortem.md](../templates/postmortem.md) | ✅ |
+| First production deploy / major release | [checklists/production-readiness.md](../checklists/production-readiness.md) | ✅ |
 | Repository creation or layout | [standards/repository.md](../standards/repository.md), [checklists/new-repository.md](../checklists/new-repository.md) | ✅ |
 | The playbook itself | [PLAYBOOK-ARCHITECTURE.md](../PLAYBOOK-ARCHITECTURE.md), [governance/change-process.md](../governance/change-process.md) | ✅ |
 
@@ -69,6 +71,15 @@ tag raised by the change at hand. A project without `mobile` in its profile neve
 - Security rules are never self-exempted: no invented exceptions (AGENT-007), no disabling
   controls to pass (AGENT-013), no silent downgrades (AGENT-003/005), suppressions only with
   justification (CODE-011) — a security finding is suppressed by waiver or fix, never by edit.
+
+## Deployment authorization boundary (AGENT-015…017)
+
+Agents *prepare* — deployment config, infrastructure changes, CI definitions, container files,
+rollback plans, pipeline-failure analysis — always as reviewable artifacts (AGENT-015). Agents
+never silently touch production infrastructure, production secrets, or deployment controls
+(AGENT-016), never disable gates or suppress findings (AGENT-013, SEC-028 waiver path), and every
+prepared change that needs human authorization is explicitly flagged as such in the agent's
+output (AGENT-017).
 
 ## Escalation paths
 

@@ -51,9 +51,9 @@
 | `standards/observability.md` (OBS) | 3 | Yes | ✅ | Structured logging, levels, correlation, telemetry content limits, health, metrics, alerts (11 rules) |
 | `standards/web.md` (WEB) | 4 | Profile: web | ✅ | Accessibility (WCAG 2.2), performance budgets, browser policy, headers/CSP, client security, i18n (28 rules) |
 | `standards/mobile.md` (MOB) | 4 | Profile: mobile | 🧊 | Stub in place: activation trigger, reserved scope, derivation contract; expanded when a mobile-project ADR is accepted |
-| `standards/ci-cd.md` (CI) | 5 | Yes | 📋 | Pipeline gates, artifact versioning, release/rollback |
-| `standards/infrastructure.md` (INFRA) | 5 | Yes | 📋 | IaC, environments, runtime secrets, network baseline, backups |
-| `standards/operations.md` (OPS) | 5 | Yes | 📋 | Incident severity, on-call, runbook/postmortem duties |
+| `standards/ci-cd.md` (CI) | 5 | Yes | ✅ | Pipeline completeness, artifact discipline, promotion, verification/rollback, release model, strategy (12 rules) |
+| `standards/infrastructure.md` (INFRA) | 5 | Yes | ✅ | IaC, environments, network/identity, scaling/resilience, containers, backup/DR, cost (29 rules) |
+| `standards/operations.md` (OPS) | 5 | Yes | ✅ | Ownership, alert routing, runbooks, severity model, incidents/postmortems, change log, capacity (12 rules) |
 
 ## agents/
 
@@ -77,8 +77,8 @@
 | `checklists/code-review.md` | PR opened | 2 | ✅ |
 | `checklists/new-repository.md` | Repository created | 2 | ✅ |
 | `checklists/security-review.md` | SEC-026 trigger fired | 3 | ✅ |
-| `checklists/production-readiness.md` | First deploy / major change | 5 | 📋 |
-| `checklists/incident-response.md` | Incident declared | 5 | 📋 |
+| `checklists/production-readiness.md` | First deploy / major change | 5 | ✅ |
+| `checklists/incident-response.md` | Incident declared | 5 | ✅ |
 
 ## templates/ (pre-compliant artifacts)
 
@@ -90,13 +90,13 @@
 | `templates/readme.md` | 2 | ✅ | DOC-001, REPO-007 |
 | `templates/claude-md.md` | 2 (finalized 6) | ✅ | App-repo agent entry: profile declaration, pinning, ADR links |
 | `templates/threat-model.md` | 3 | ✅ | SEC-027 |
-| `templates/runbook.md` | 5 | 📋 | OPS rules |
-| `templates/postmortem.md` | 5 | 📋 | OPS rules |
+| `templates/runbook.md` | 5 | ✅ | OPS-004/005 |
+| `templates/postmortem.md` | 5 | ✅ | OPS-008 (blameless) |
 
 ---
 
 **Totals:** 46 active documents (6 root + 4 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
-**Phase 4 complete (2026-08-11):** 38 documents exist (35 ✅ + 2 🚧 seeds + 1 🧊 stub); 202
-normative rules across 14 rule-bearing documents. Backend/API/service **and web** development may
-begin; mobile awaits its activation trigger. Next up: Phase 5 — CI/CD & Operations — see
-[PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).
+**Phase 5 complete (2026-08-11):** all 46 active documents now exist (43 ✅ + 2 🚧 seeds + 1 🧊 stub); 259
+normative rules across 17 rule-bearing documents. Production deployment is now fully gated
+end-to-end. Remaining: Phase 6 — AI Agent Governance (agent-standard completion, context-map
+finalization, playbook self-CI tooling) — see [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).

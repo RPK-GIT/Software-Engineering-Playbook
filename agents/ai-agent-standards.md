@@ -122,6 +122,30 @@
 - **Rationale:** History rewriting is the one git operation that destroys the audit trail everything else relies on (GIT-009); standing permission does not exist — authorization is per-operation, in the current task, from a human ([P-8](../principles/engineering-principles.md)).
 - **Exceptions:** none
 
+### AGENT-015: An AI agent MAY prepare deployment, infrastructure, CI, and container configuration, analyze pipeline failures, and draft rollback plans — as proposed changes for review.
+
+- **Level:** MAY
+- **Enforcement:** manual
+- **Applies to:** all
+- **Rationale:** Preparation is where agents excel and where mistakes are still cheap: everything lands as a reviewable artifact (PR, plan, draft) inside the normal gates, never as a direct production action ([P-9](../principles/engineering-principles.md)).
+- **Exceptions:** n/a
+
+### AGENT-016: An AI agent MUST NOT modify production infrastructure, production secrets, or deployment controls without explicit human authorization for that specific operation.
+
+- **Level:** MUST NOT
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** The production boundary is where a wrong action stops being a diff and starts being an incident; AGENT-013 covers repository governance — this rule covers the runtime estate: infrastructure state, secret values, release gates, required approvals, vulnerability-finding suppression (which follows the waiver path, SEC-028, never an edit) ([P-5](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
+### AGENT-017: An AI agent MUST explicitly identify, in its output, every prepared change that requires human authorization before it can take effect.
+
+- **Level:** MUST
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** The complement of AGENT-015/016: an agent that prepares a production-affecting change and does not flag the authorization boundary invites a human to rubber-stamp it as routine; the flag is what keeps the human gate a real gate (CI-010) ([P-2](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
 ## Retirement log
 
 None.

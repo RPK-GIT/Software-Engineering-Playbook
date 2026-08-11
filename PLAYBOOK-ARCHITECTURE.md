@@ -248,7 +248,12 @@ enforceability varies per rule and is recorded in the enforcement matrix. Scope 
 | Correlation identifiers | observability.md (OBS-003/004) | api.md (API-005 exposes them) |
 | Encryption (transit + rest) | security.md (SEC-016/017) | database.md, infrastructure.md |
 | Data retention — limits vs mechanism | security.md (SEC-015: limits) / database.md (DB-011: mechanism) | — |
-| Backups & restore | infrastructure.md (Phase 5) | database.md (deliberately defines no backup rules) |
+| Backups & restore & disaster recovery | infrastructure.md (INFRA-022…026) | database.md (deliberately defines no backup rules) |
+| Overload/capacity protection vs abuse protection | infrastructure.md (INFRA-014: capacity) / security.md (SEC-023: abuse) | — mechanisms may coincide; requirements are distinct |
+| Deployment & release process | ci-cd.md (CI-003…012) | git.md (GIT-010 tags), operations.md (OPS-009 records) |
+| Telemetry existence vs operational use | observability.md (what signals exist) / operations.md (how they are operated) | — |
+| Incident process & severity model | operations.md (OPS-006…008, §2) | security.md (SEC-011 runs in parallel for exposures) |
+| Migration content vs migration application | database.md (DB-001…004) / ci-cd.md (CI-009) | — |
 | Vulnerability & dependency scanning | security.md (SEC-019…021) | ci-cd.md (pipeline *runs* the scans) |
 | Rate limiting & abuse controls | security.md (SEC-023) | api.md |
 | Browser security headers & CSP | web.md (WEB-017/018) | security.md |

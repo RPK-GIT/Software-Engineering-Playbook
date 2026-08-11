@@ -4,10 +4,12 @@
 > [PLAYBOOK-ARCHITECTURE.md](PLAYBOOK-ARCHITECTURE.md); the full inventory with per-document status is
 > [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md).
 >
-> **Current phase: Phase 4 COMPLETE (2026-08-11). Next: Phase 5 — CI/CD & Operations.**
-> Phase 4 exit criteria verified: web features can be built and reviewed against explicit platform
-> rules (WEB-001…028 + DoD web section); mobile scope is bounded by the trigger-gated stub
-> ([standards/mobile.md](standards/mobile.md)) so nobody writes speculative rules.
+> **Current phase: Phase 5 COMPLETE (2026-08-11). Next: Phase 6 — AI Agent Governance.**
+> Phase 5 exit criteria verified: first production deployment can be gated end-to-end
+> ([checklists/production-readiness.md](checklists/production-readiness.md) aggregates every
+> domain); every `ci`-tagged MUST has a specified check in the
+> [enforcement matrix](governance/enforcement-matrix.md) (implementation per project remains
+> pending where classed `partial` — honestly recorded, not claimed).
 > Phase 3 exit criteria verified: security-review gate defined with trigger list and owner role
 > (SEC-026, Playbook Owner / Principal Architect); every Phase 3 MUST in the
 > [enforcement matrix](governance/enforcement-matrix.md); all checklists resolve to live rule IDs.

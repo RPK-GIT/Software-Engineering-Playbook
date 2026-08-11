@@ -26,6 +26,11 @@ PARTIAL = {
     'SEC-028': 'Scanner severity gate (CVSS v3.1 >= 7.0; accepted 2026-08-11); waiver path is human-only',
     'API-001': 'Contract presence/lint check; contract *quality* needs review',
     'DB-001': 'Migration-tool presence/ordering check; migration *content* needs review',
+    'CI-004': 'Artifact versioning/traceability check - registry and pipeline tooling per project',
+    'INFRA-018': 'Non-root check in image lint/policy - tooling per project',
+    'INFRA-020': 'Image scanner in pipeline - tooling selection per project (ADR); SEC-028 gate applies',
+    'INFRA-021': 'SBOM generation step - tooling maturity varies by ecosystem',
+    'INFRA-027': 'Attribution policy check (tagging/naming) - platform-dependent',
     'WEB-003': 'Accessibility lint (label association is deterministic); coverage depends on tooling',
     'WEB-006': 'Contrast checks in accessibility tooling; dynamic states need review',
     'WEB-009': 'Accessibility check step present in CI - tooling selection per project (ADR)',
@@ -37,7 +42,8 @@ PARTIAL = {
 JUDGMENT = {'ARCH-001','ARCH-002','ARCH-003','ARCH-008','ARCH-009',
             'CODE-004','CODE-009','TEST-011','GIT-011',
             'SEC-004','DB-008','OBS-010','OBS-011','API-011',
-            'WEB-008','WEB-016','WEB-018'}
+            'WEB-008','WEB-016','WEB-018',
+            'CI-011','CI-012','INFRA-013','INFRA-017'}
 # Mechanism text overrides (default derived from enforcement + prefix)
 MECH = {
     'GIT-002': 'Platform branch protection (PR-only)',
@@ -74,11 +80,16 @@ GATE_BY_PREFIX = {
     'OBS': 'Code review',
     'WEB': 'Code review (web items in DoD); security review where SEC-026 triggers fire',
     'MOB': 'n/a - stub, no rules',
+    'CI': 'Pipeline-change review / production-readiness gate',
+    'INFRA': 'Infrastructure-change review / production-readiness gate',
+    'OPS': 'Production-readiness gate / operational process',
 }
 PHASE1 = re.compile(r'^(RULE-\d+|AGENT-0(0\d|1[012]))$')
 PHASE3_PREFIXES = {'SEC', 'API', 'DB', 'OBS'}
 PHASE4 = {'WEB', 'MOB'}
 PHASE4_IDS = {'SEC-028'}
+PHASE5_PREFIXES = {'CI', 'INFRA', 'OPS'}
+PHASE5_IDS = {'AGENT-015', 'AGENT-016', 'AGENT-017', 'WEB-029'}
 
 rules = []
 heading = re.compile(r'^### ([A-Z]{2,6}-[0-9]{3}): (.+)$', re.M)
@@ -110,6 +121,8 @@ def row(rid, doc, lvl, enf, app):
     blocking = 'yes' if lvl in ('MUST', 'MUST NOT') else 'no'
     if PHASE1.match(rid):
         phase = '1'
+    elif prefix in PHASE5_PREFIXES or rid in PHASE5_IDS:
+        phase = '5'
     elif prefix in PHASE4 or rid in PHASE4_IDS:
         phase = '4'
     elif prefix in PHASE3_PREFIXES:

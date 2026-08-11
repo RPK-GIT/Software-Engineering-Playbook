@@ -63,6 +63,18 @@
 | ARCH-007 | architecture.md | MUST | uses-database | Architecture review (structural changes, in code review) | review-only | no | yes | yes | yes | 2 |
 | ARCH-008 | architecture.md | MUST NOT | all | Architecture review (structural changes, in code review) | judgment | no | assists | yes | yes | 2 |
 | ARCH-009 | architecture.md | MUST NOT | all | Architecture review (structural changes, in code review) | judgment | no | assists | yes | yes | 2 |
+| CI-001 | ci-cd.md | MUST | all | Pipeline check (per-project tooling) | auto | yes | yes | no | yes | 5 |
+| CI-002 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-003 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-004 | ci-cd.md | MUST | all | Artifact versioning/traceability check - registry and pipeline tooling per project | partial | partial | yes | spot-check | yes | 5 |
+| CI-005 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-006 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-007 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-008 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-009 | ci-cd.md | MUST | uses-database | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-010 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| CI-011 | ci-cd.md | MUST | all | Pipeline-change review / production-readiness gate | judgment | no | assists | yes | yes | 5 |
+| CI-012 | ci-cd.md | SHOULD | all | Pipeline-change review / production-readiness gate | judgment | no | assists | yes | no | 5 |
 | CODE-001 | coding.md | MUST | all | Formatter check (per-project tooling) | auto | yes | yes | no | yes | 2 |
 | CODE-002 | coding.md | MUST | all | Linter (per-project tooling) | auto | yes | yes | no | yes | 2 |
 | CODE-003 | coding.md | MUST | all | Type checker as blocking CI step | auto | yes | yes | no | yes | 2 |
@@ -112,6 +124,35 @@
 | GIT-012 | git.md | MUST | all | Same platform gates as regular changes | auto | yes | yes | no | yes | 2 |
 | GIT-013 | git.md | SHOULD NOT | all | PR-size warning in CI (accepted 2026-08-11; never auto-blocking) | partial | partial | yes | spot-check | no | 2 |
 | GIT-014 | git.md | SHOULD | all | Code review | review-only | no | yes | yes | no | 2 |
+| INFRA-001 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-002 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-003 | infrastructure.md | SHOULD | all | Process step (owner / quarterly review) | process | no | follows | yes | no | 5 |
+| INFRA-004 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-005 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-006 | infrastructure.md | SHOULD | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | no | 5 |
+| INFRA-007 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-008 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-009 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-010 | infrastructure.md | SHOULD | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | no | 5 |
+| INFRA-011 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-012 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-013 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | judgment | no | assists | yes | yes | 5 |
+| INFRA-014 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-015 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-016 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-017 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | judgment | no | assists | yes | yes | 5 |
+| INFRA-018 | infrastructure.md | MUST NOT | all | Non-root check in image lint/policy - tooling per project | partial | partial | yes | spot-check | yes | 5 |
+| INFRA-019 | infrastructure.md | SHOULD | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | no | 5 |
+| INFRA-020 | infrastructure.md | MUST | all | Image scanner in pipeline - tooling selection per project (ADR); SEC-028 gate applies | partial | partial | yes | spot-check | yes | 5 |
+| INFRA-021 | infrastructure.md | SHOULD | all | SBOM generation step - tooling maturity varies by ecosystem | partial | partial | yes | spot-check | no | 5 |
+| INFRA-022 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-023 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-024 | infrastructure.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 5 |
+| INFRA-025 | infrastructure.md | MUST | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | yes | 5 |
+| INFRA-026 | infrastructure.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 5 |
+| INFRA-027 | infrastructure.md | MUST | all | Attribution policy check (tagging/naming) - platform-dependent | partial | partial | yes | spot-check | yes | 5 |
+| INFRA-028 | infrastructure.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 5 |
+| INFRA-029 | infrastructure.md | SHOULD | all | Infrastructure-change review / production-readiness gate | review-only | no | yes | yes | no | 5 |
 | OBS-001 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
 | OBS-002 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
 | OBS-003 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
@@ -123,6 +164,18 @@
 | OBS-009 | observability.md | SHOULD | api-service | Code review | review-only | no | yes | yes | no | 3 |
 | OBS-010 | observability.md | MUST | all | Code review | judgment | no | assists | yes | yes | 3 |
 | OBS-011 | observability.md | SHOULD | api-service, web | Code review | judgment | no | assists | yes | no | 3 |
+| OPS-001 | operations.md | MUST | all | Production-readiness gate / operational process | review-only | no | yes | yes | yes | 5 |
+| OPS-002 | operations.md | MUST | all | Production-readiness gate / operational process | review-only | no | yes | yes | yes | 5 |
+| OPS-003 | operations.md | MUST | all | Production-readiness gate / operational process | review-only | no | yes | yes | yes | 5 |
+| OPS-004 | operations.md | MUST | all | Production-readiness gate / operational process | review-only | no | yes | yes | yes | 5 |
+| OPS-005 | operations.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 5 |
+| OPS-006 | operations.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 5 |
+| OPS-007 | operations.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 5 |
+| OPS-008 | operations.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 5 |
+| OPS-009 | operations.md | MUST | all | Production-readiness gate / operational process | review-only | no | yes | yes | yes | 5 |
+| OPS-010 | operations.md | MUST | all | Production-readiness gate / operational process | review-only | no | yes | yes | yes | 5 |
+| OPS-011 | operations.md | SHOULD | all | Process step (owner / quarterly review) | process | no | follows | yes | no | 5 |
+| OPS-012 | operations.md | SHOULD | all | Process step (owner / quarterly review) | process | no | follows | yes | no | 5 |
 | REPO-001 | repository.md | MUST | all | Required-file presence check (new-repository checklist / CI) | auto | yes | yes | no | yes | 2 |
 | REPO-002 | repository.md | MUST NOT | all | Secret scanning per SEC-020; tooling selection per project; review vigilance meanwhile | partial | partial | yes | spot-check | yes | 2 |
 | REPO-003 | repository.md | MUST NOT | all | .gitignore + tracked-file pattern check | auto | yes | yes | no | yes | 2 |
@@ -204,6 +257,7 @@
 | WEB-026 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
 | WEB-027 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
 | WEB-028 | web.md | SHOULD | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | no | 4 |
+| WEB-029 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 5 |
 | AGENT-001 | ai-agent-standards.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 1 |
 | AGENT-002 | ai-agent-standards.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 1 |
 | AGENT-003 | ai-agent-standards.md | MUST | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 1 |
@@ -218,8 +272,11 @@
 | AGENT-012 | ai-agent-standards.md | SHOULD | all | Review of agent output (PR review) | review-only | no | yes | yes | no | 1 |
 | AGENT-013 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 2 |
 | AGENT-014 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 2 |
+| AGENT-015 | ai-agent-standards.md | MAY | all | Process step (owner / quarterly review) | process | no | follows | yes | no | 5 |
+| AGENT-016 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 5 |
+| AGENT-017 | ai-agent-standards.md | MUST | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 5 |
 
-**Totals:** 202 rules - auto: 23 · judgment: 17 · partial: 25 · process: 7 · review-only: 130
+**Totals:** 259 rules - auto: 24 · judgment: 21 · partial: 30 · process: 18 · review-only: 166
 
 ## Tooling gaps (tracked for Phase 5/6)
 
