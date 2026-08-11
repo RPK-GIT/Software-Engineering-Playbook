@@ -14,14 +14,15 @@ An adopting project repository:
 2. **Declares a profile** — the set of profile tags from
    [standards/_rule-format.md](../standards/_rule-format.md) §4 that describe it (e.g.,
    `web, api-service, uses-database`). The declaration lives in the project's `CLAUDE.md`, created
-   from `templates/claude-md.md` (Phase 2).
+   from [templates/claude-md.md](../templates/claude-md.md).
 3. **Inherits every Active rule** whose applicability tags match `all`, the declared profile, or a
    trigger raised by a given change. Inheritance is by reference — the project never copies rule
    text (RULE-008).
 4. **Keeps its own ADR log** for project-level decisions. Org-level decisions stay in this repo's
    [decisions/](../decisions/README.md).
-5. **Wires the applicable gates** — the checklists and, once defined, the CI checks from
-   `governance/enforcement-matrix.md` (Phase 2).
+5. **Wires the applicable gates** — the checklists (starting with
+   [new-repository](../checklists/new-repository.md)) and the CI checks from the
+   [enforcement matrix](enforcement-matrix.md).
 
 ## 2. Precedence (summary)
 

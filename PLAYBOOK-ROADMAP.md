@@ -4,7 +4,11 @@
 > [PLAYBOOK-ARCHITECTURE.md](PLAYBOOK-ARCHITECTURE.md); the full inventory with per-document status is
 > [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md).
 >
-> **Current phase: Phase 1 COMPLETE (2026-08-11). Next: Phase 2 — Core Engineering Standards.**
+> **Current phase: Phase 2 COMPLETE (2026-08-11). Next: Phase 3 — Security & Reliability.**
+> Phase 2 exit criteria verified: a new repository can be created fully compliant
+> ([checklists/new-repository.md](checklists/new-repository.md)); every Phase 2 MUST is in the
+> [enforcement matrix](governance/enforcement-matrix.md); the Definition of Done resolves only to
+> live rule IDs (validation V7).
 
 ## Sequencing logic
 

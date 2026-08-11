@@ -5,7 +5,10 @@ md_files = [f for f in md_files if not f.startswith('.claude')]
 issues = []
 
 # --- V1: link integrity (relative to each file's directory) ---
+# templates/ exempt: their links resolve in the destination repository they are copied into
 for f in md_files:
+    if f.startswith('templates/'):
+        continue
     base = os.path.dirname(f)
     text = open(f, encoding='utf-8').read()
     for m in re.finditer(r'\[[^\]]*\]\(([^)#\s]+)(#[^)]*)?\)', text):
@@ -59,9 +62,10 @@ print("  " + ", ".join(sorted(ids)))
 
 # --- V6: heuristic — uppercase keywords outside rule blocks/level fields (human-review list) ---
 v6 = []
+SKIP_LINE = re.compile(r'^(### [A-Z]{2,6}-[0-9]{3}:|- \*\*(Level|Rationale|Exceptions|Enforcement|Applies to):\*\*|\||>)')
 for f in md_files:
     for i, line in enumerate(open(f, encoding='utf-8').read().split('\n'), 1):
-        if re.match(r'^### [A-Z]{2,6}-[0-9]{3}:', line) or line.strip().startswith('- **Level:**'):
+        if SKIP_LINE.match(line.strip()):
             continue
         if re.search(r'\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b', line):
             v6.append(f"{f}:{i}: {line.strip()[:100]}")
@@ -87,6 +91,27 @@ for f in md_files:
         if p not in pdefined:
             issues.append(f"V7 {f}: cites nonexistent principle {p}")
 
+# --- V8: enforcement-matrix completeness (RULE-006) ---
+matrix_path = 'governance/enforcement-matrix.md'
+if os.path.exists(matrix_path):
+    matrix = open(matrix_path, encoding='utf-8').read()
+    matrix_ids = set(re.findall(r'^\| ([A-Z]{2,6}-[0-9]{3}) \|', matrix, re.M))
+    for f in md_files:
+        text = open(f, encoding='utf-8').read()
+        for m in heading_re.finditer(text):
+            rid = m.group(1)
+            block = text[m.end():m.end() + 900]
+            lvl = re.search(r'\*\*Level:\*\* (MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b', block)
+            enf = re.search(r'\*\*Enforcement:\*\* (\w+)', block)
+            if lvl and enf and lvl.group(1) in ('MUST', 'MUST NOT') and enf.group(1) in ('ci', 'review'):
+                if rid not in matrix_ids:
+                    issues.append(f"V8 {rid}: mandatory ci/review rule missing from enforcement matrix")
+    for rid in matrix_ids:
+        if rid not in ids:
+            issues.append(f"V8 matrix lists nonexistent rule {rid}")
+else:
+    issues.append("V8 governance/enforcement-matrix.md missing (required from Phase 2)")
+
 # --- V9: index consistency ---
 idx = open('DOCUMENT-INDEX.md', encoding='utf-8').read()
 for f in md_files:
@@ -109,5 +134,5 @@ if issues:
     print(f"ISSUES ({len(issues)}):")
     print("\n".join(issues))
 else:
-    print("ALL AUTOMATED CHECKS PASS: V1-V5, V7, V9 + tech-agnosticism. (V8 n/a until Phase 2 matrix exists.)")
+    print("ALL AUTOMATED CHECKS PASS: V1-V5, V7, V8, V9 + tech-agnosticism.")
 print(f"Files checked: {len(md_files)}")

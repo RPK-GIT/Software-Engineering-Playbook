@@ -88,9 +88,9 @@ New prefixes require a change through [governance/change-process.md](../governan
 | `handles-pii` | trigger | The project or change touches personally identifiable information |
 | `public-api` | trigger | The change affects an externally consumed contract |
 
-*Profile* tags are declared once per project in its repository's `CLAUDE.md` (format finalized in
-`templates/claude-md.md`, Phase 2). *Trigger* tags activate per change, based on what the change
-touches. New tags require a change through governance/change-process.md.
+*Profile* tags are declared once per project in its repository's `CLAUDE.md` (format defined in
+[templates/claude-md.md](../templates/claude-md.md)). *Trigger* tags activate per change, based on
+what the change touches. New tags require a change through governance/change-process.md.
 
 ## 5. Rule lifecycle
 

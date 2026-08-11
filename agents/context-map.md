@@ -18,12 +18,12 @@
 
 | Document | Available |
 |---|---|
-| [standards/_rule-format.md](../standards/_rule-format.md) — how to read every rule | ✅ now |
-| [agents/ai-agent-standards.md](ai-agent-standards.md) — binding agent behavior | ✅ now (seed) |
-| [governance/waivers.md](../governance/waivers.md) — what agents may and may not do about exceptions | ✅ now |
-| `standards/coding.md`, `standards/git.md`, `standards/testing.md`, `standards/documentation.md` | Phase 2 |
+| [standards/_rule-format.md](../standards/_rule-format.md) — how to read every rule | ✅ |
+| [agents/ai-agent-standards.md](ai-agent-standards.md) — binding agent behavior | ✅ (seed) |
+| [governance/waivers.md](../governance/waivers.md) — what agents may and may not do about exceptions | ✅ |
+| [standards/coding.md](../standards/coding.md), [standards/git.md](../standards/git.md), [standards/testing.md](../standards/testing.md), [standards/documentation.md](../standards/documentation.md) | ✅ |
 | `standards/security.md`, `standards/observability.md` | Phase 3 |
-| `checklists/definition-of-done.md` — completion gate | Phase 2 |
+| [checklists/definition-of-done.md](../checklists/definition-of-done.md) — completion gate (AGENT-010) | ✅ |
 
 ## Conditional set by task type
 
@@ -33,7 +33,9 @@ stable from day one; until they exist, the engineering principles plus project A
 
 | Task touches… | Load | Available |
 |---|---|---|
-| Module/service structure, cross-component interfaces | `standards/architecture.md`, `standards/application.md` | Phase 2 |
+| Module/service structure, cross-component interfaces | [standards/architecture.md](../standards/architecture.md), [standards/application.md](../standards/application.md) | ✅ |
+| Runtime behavior: external calls, state, config, flags | [standards/application.md](../standards/application.md) | ✅ |
+| Reviewing a pull request | [checklists/code-review.md](../checklists/code-review.md) | ✅ |
 | An API contract | `standards/api.md` (+ trigger `public-api` rules) | Phase 3 |
 | Schema, migrations, persisted data | `standards/database.md` | Phase 3 |
 | Auth, secrets, PII, external surface | `checklists/security-review.md` (+ trigger `handles-pii` rules) | Phase 3 |
@@ -41,8 +43,12 @@ stable from day one; until they exist, the engineering principles plus project A
 | Mobile UI | `standards/mobile.md` | Phase 4 (stub until triggered) |
 | Pipelines, releases, environments | `standards/ci-cd.md`, `standards/infrastructure.md` | Phase 5 |
 | Incidents, runbooks, on-call artifacts | `standards/operations.md`, `checklists/incident-response.md` | Phase 5 |
-| Repository creation or layout | `standards/repository.md`, `checklists/new-repository.md` | Phase 2 |
-| The playbook itself | [PLAYBOOK-ARCHITECTURE.md](../PLAYBOOK-ARCHITECTURE.md), [governance/change-process.md](../governance/change-process.md) | ✅ now |
+| Repository creation or layout | [standards/repository.md](../standards/repository.md), [checklists/new-repository.md](../checklists/new-repository.md) | ✅ |
+| The playbook itself | [PLAYBOOK-ARCHITECTURE.md](../PLAYBOOK-ARCHITECTURE.md), [governance/change-process.md](../governance/change-process.md) | ✅ |
+
+To determine which checks are automated versus which need human approval for any rule, consult the
+[enforcement matrix](../governance/enforcement-matrix.md). Deviation reporting: AGENT-009 via the
+`## Standards deviations` PR section ([templates/pull-request.md](../templates/pull-request.md)).
 
 ## Profile resolution
 

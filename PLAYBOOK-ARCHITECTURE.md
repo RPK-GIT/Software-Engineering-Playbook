@@ -238,6 +238,9 @@ enforceability varies per rule and is recorded in the enforcement matrix. Scope 
 | Performance | Each domain owns its budget rules (web, api, database) | A separate "performance.md" |
 | Accessibility | web.md, mobile.md | application.md |
 | Privacy / PII | security.md (classification + handling) | database.md (cites SEC IDs for retention) |
+| Secrets — presence in version control | repository.md (REPO-002, REPO-003) | git.md (GIT-009 cites the purge case) |
+| Secrets — management, delivery, rotation, scanning policy | security.md (Phase 3) | repository.md |
+| Agent-specific git prohibitions | agents/ai-agent-standards.md (AGENT-013, AGENT-014) | git.md (owns the universal workflow rules) |
 | Releases & versioning | ci-cd.md | repository.md |
 | Dependency selection | coding.md | — |
 | Dependency vulnerabilities | security.md | ci-cd.md (pipeline *runs* the scan; rule lives in SEC) |

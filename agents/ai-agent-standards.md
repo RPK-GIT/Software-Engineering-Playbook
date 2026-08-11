@@ -106,6 +106,22 @@
 - **Rationale:** Citations make agent reasoning auditable and teach humans the rulebook as a side effect ([P-12](../principles/engineering-principles.md)).
 - **Exceptions:** justified-deviation
 
+### AGENT-013: An AI agent MUST NOT modify repository governance controls — branch protection, required checks, review requirements, CI configuration, permissions — in order to make its own work pass.
+
+- **Level:** MUST NOT
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** The gates exist precisely to check the agent's work; an agent that can loosen its own gates has no gates. Legitimate governance changes are proposed to a human as their own reviewed change, never bundled with the work they would unblock ([P-5](../principles/engineering-principles.md), [P-9](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
+### AGENT-014: An AI agent MUST NOT force-push to or rewrite the history of any shared branch without explicit human authorization given for that specific operation.
+
+- **Level:** MUST NOT
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** History rewriting is the one git operation that destroys the audit trail everything else relies on (GIT-009); standing permission does not exist — authorization is per-operation, in the current task, from a human ([P-8](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
 ## Retirement log
 
 None.

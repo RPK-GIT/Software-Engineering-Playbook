@@ -25,7 +25,7 @@
 | `governance/how-to-use.md` | 1 | Yes | ✅ | Adoption: inheritance, version pinning, project profiles |
 | `governance/change-process.md` | 1 | Yes | ✅ | RFC flow, playbook versioning, ownership, review cadence, self-validation capabilities |
 | `governance/waivers.md` | 1 | Yes | ✅ | Exception path for MUST rules: approval, format, expiry, register |
-| `governance/enforcement-matrix.md` | 2 | Yes | 📋 | Every MUST → CI check or named human gate |
+| `governance/enforcement-matrix.md` | 2 | Yes | ✅ | Every rule → gate, automatability class, blocking status (generated from rule blocks) |
 
 ## principles/
 
@@ -38,13 +38,13 @@
 | Document | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|
 | `standards/_rule-format.md` (RULE) | 1 | Yes | ✅ | Meta-standard: rule grammar — IDs, levels, enforcement, applicability registries |
-| `standards/architecture.md` (ARCH) | 2 | Yes | 📋 | Layering, boundaries, dependency direction, coupling |
-| `standards/coding.md` (CODE) | 2 | Yes | 📋 | Language-agnostic construction rules, dependency selection |
-| `standards/application.md` (APP) | 2 | Yes | 📋 | Cross-platform runtime: config, errors, flags, jobs, i18n |
-| `standards/testing.md` (TEST) | 2 | Yes | 📋 | Test levels, coverage floors, isolation, fixtures |
-| `standards/git.md` (GIT) | 2 | Yes | 📋 | Branching, commits, PR flow |
-| `standards/repository.md` (REPO) | 2 | Yes | 📋 | Repo layout, required files, naming |
-| `standards/documentation.md` (DOC) | 2 | Yes | 📋 | What must be documented, where; ADR-trigger list |
+| `standards/architecture.md` (ARCH) | 2 | Yes | ✅ | Layering, boundaries, dependency direction, data ownership, when-to-split (9 rules) |
+| `standards/coding.md` (CODE) | 2 | Yes | ✅ | Language-agnostic construction rules, dependency selection (14 rules) |
+| `standards/application.md` (APP) | 2 | Yes | ✅ | Cross-platform runtime: config, failure modes, idempotency, flags (12 rules) |
+| `standards/testing.md` (TEST) | 2 | Yes | ✅ | Test levels, determinism, isolation, flake policy, coverage mechanism (14 rules) |
+| `standards/git.md` (GIT) | 2 | Yes | ✅ | Branching, protection, commits, PR flow, releases, reverts (12 rules) |
+| `standards/repository.md` (REPO) | 2 | Yes | ✅ | Required files, tracked-vs-untracked boundary, lockfiles, ownership (10 rules) |
+| `standards/documentation.md` (DOC) | 2 | Yes | ✅ | What must be documented, where; ADR-trigger list (8 rules) |
 | `standards/security.md` (SEC) | 3 | Yes | 📋 | Authn/z, secrets, input handling, PII, dependency vulns |
 | `standards/api.md` (API) | 3 | Profile: api-service | 📋 | Contracts, versioning, error shape, pagination |
 | `standards/database.md` (DB) | 3 | Profile: uses-database | 📋 | Modeling, migration safety, transactions, retention |
@@ -73,9 +73,9 @@
 
 | Document | Gate | Phase | Status |
 |---|---|---|---|
-| `checklists/definition-of-done.md` | Work item claimed complete | 2 (extended 3–5) | 📋 |
-| `checklists/code-review.md` | PR opened | 2 | 📋 |
-| `checklists/new-repository.md` | Repository created | 2 | 📋 |
+| `checklists/definition-of-done.md` | Work item claimed complete | 2 (extended 3–5) | ✅ |
+| `checklists/code-review.md` | PR opened | 2 | ✅ |
+| `checklists/new-repository.md` | Repository created | 2 | ✅ |
 | `checklists/security-review.md` | Auth/PII/external-surface change | 3 | 📋 |
 | `checklists/production-readiness.md` | First deploy / major change | 5 | 📋 |
 | `checklists/incident-response.md` | Incident declared | 5 | 📋 |
@@ -86,9 +86,9 @@
 |---|---|---|---|
 | `templates/adr.md` | 1 | ✅ | ADR practice (decisions/) |
 | `templates/rfc.md` | 1 | ✅ | Standard-change proposals (change-process) |
-| `templates/pull-request.md` | 2 | 📋 | GIT/DOC rules, deviations section |
-| `templates/readme.md` | 2 | 📋 | REPO/DOC rules |
-| `templates/claude-md.md` | 2 (finalized 6) | 📋 | App-repo agent entry: profile, pinning, ADR links |
+| `templates/pull-request.md` | 2 | ✅ | AGENT-009 deviations section, GIT-007 scope |
+| `templates/readme.md` | 2 | ✅ | DOC-001, REPO-007 |
+| `templates/claude-md.md` | 2 (finalized 6) | ✅ | App-repo agent entry: profile declaration, pinning, ADR links |
 | `templates/threat-model.md` | 3 | 📋 | SEC trigger rules |
 | `templates/runbook.md` | 5 | 📋 | OPS rules |
 | `templates/postmortem.md` | 5 | 📋 | OPS rules |
@@ -96,5 +96,6 @@
 ---
 
 **Totals:** 46 active documents (6 root + 4 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
-**Phase 1 complete (2026-08-11):** 16 documents exist (14 ✅ + 2 🚧 seeds). Next up: Phase 2 — see
+**Phase 2 complete (2026-08-11):** 30 documents exist (28 ✅ + 2 🚧 seeds); 106 normative rules
+across 9 rule-bearing documents. Next up: Phase 3 — Security & Reliability — see
 [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).
