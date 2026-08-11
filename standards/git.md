@@ -121,15 +121,30 @@ repository governance to make its own work pass, never force-pushing or rewritin
 explicit human authorization — are AGENT-013 and AGENT-014 in
 [agents/ai-agent-standards.md](../agents/ai-agent-standards.md).
 
-## Proposed policy values (pending approval — not yet binding)
+### GIT-013: A pull request SHOULD NOT exceed 400 changed lines.
 
-**PROPOSED POLICY — pull request size and branch lifetime (backs GIT-007)**
-- **Value:** ≤ 400 changed lines per PR (soft CI warning, not blocking); feature branches merged or closed within 5 working days
-- **Reason:** review defect-detection drops sharply beyond a few hundred lines; branches older than a week diverge enough that merges become their own risk events
-- **Risk of too low:** artificial PR splitting that scatters one logical change across PRs, breaking GIT-007 in the other direction
-- **Risk of too high:** limits stop shaping behavior; thousand-line PRs get rubber-stamped
-- **Scope:** all profiles; warning-level in CI, judgment at review
-- **Status:** REQUIRES PLAYBOOK OWNER APPROVAL
+- **Level:** SHOULD NOT
+- **Enforcement:** ci
+- **Applies to:** all
+- **Rationale:** Accepted policy value (2026-08-11): a warning threshold to encourage reviewability, never an automatic block — review defect-detection drops sharply beyond a few hundred lines ([P-8](../principles/engineering-principles.md)).
+- **Exceptions:** justified-deviation — e.g., mechanical renames, generated-file updates, single logical changes that genuinely cannot be split
+
+### GIT-014: A feature branch SHOULD be merged or closed within 5 working days.
+
+- **Level:** SHOULD
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** Accepted policy value (2026-08-11): branches older than a week diverge enough that the merge becomes its own risk event ([P-8](../principles/engineering-principles.md)).
+- **Exceptions:** justified-deviation for legitimate long-running work, recorded on the work item
+
+## Accepted policy values
+
+**ACCEPTED POLICY — PR size and branch lifetime (2026-08-11, Playbook Owner)**
+- **Value:** ≤ 400 changed lines per PR, warning-level (GIT-013); feature branches ≤ 5 working days (GIT-014)
+- **Terms of acceptance:** exceeding the size threshold never blocks automatically — the purpose is reviewability; branch-lifetime exceptions justified for legitimate long-running work
+
+**ACCEPTED CONVENTION — Conventional Commits (2026-08-11, Playbook Owner)**
+- GIT-006's commit convention is ratified as the project-wide standard; not to be revisited unless implementation reveals a concrete architectural problem.
 
 ## Retirement log
 

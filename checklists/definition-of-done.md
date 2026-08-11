@@ -42,6 +42,16 @@
 - [ ] ADR recorded if the change matches a trigger — DOC-003
 - [ ] Deprecations documented with replacement and removal plan — DOC-004
 
+## When the change touches security surface, data, or APIs (Phase 3)
+
+- [ ] Security-review triggers checked; review completed if any fired — SEC-026
+- [ ] Threat model updated if a SEC-027 trigger matched — SEC-027
+- [ ] Trust-boundary input validated; interpreters reached only safely — SEC-005, SEC-006
+- [ ] New persisted structures classified; schema change is a versioned, compatible migration with a rollback path — SEC-014, DB-001, DB-004, DB-002
+- [ ] API contract updated with the code; no in-version breaking change; errors use the standard contract — API-001, API-002, API-005
+- [ ] New code emits structured logs at correct levels, carries the correlation ID, leaks nothing sensitive — OBS-001, OBS-002, OBS-004, OBS-005
+- [ ] Changed-line coverage meets the expectation or the deviation is justified — TEST-015
+
 ## Agents (and honest humans)
 
 - [ ] Deviations from recommended rules recorded under `## Standards deviations` — AGENT-009

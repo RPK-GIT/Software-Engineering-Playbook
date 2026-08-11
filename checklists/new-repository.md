@@ -28,8 +28,10 @@
 - [ ] CI config committed to the repository — REPO-009
 - [ ] Formatter, linter, type check wired as blocking steps — CODE-001, CODE-002, CODE-003
 - [ ] Complexity limit active in static analysis — CODE-010
-- [ ] Test run + coverage measurement and report — TEST-014
+- [ ] Test run + coverage measurement and report — TEST-014, TEST-015
 - [ ] Commit-message lint — GIT-006
+- [ ] Dependency vulnerability scanning — SEC-019
+- [ ] Secret scanning — SEC-020
 
 ## Structure and decisions
 

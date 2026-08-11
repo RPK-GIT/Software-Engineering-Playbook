@@ -22,7 +22,7 @@
 | [agents/ai-agent-standards.md](ai-agent-standards.md) — binding agent behavior | ✅ (seed) |
 | [governance/waivers.md](../governance/waivers.md) — what agents may and may not do about exceptions | ✅ |
 | [standards/coding.md](../standards/coding.md), [standards/git.md](../standards/git.md), [standards/testing.md](../standards/testing.md), [standards/documentation.md](../standards/documentation.md) | ✅ |
-| `standards/security.md`, `standards/observability.md` | Phase 3 |
+| [standards/security.md](../standards/security.md), [standards/observability.md](../standards/observability.md) | ✅ |
 | [checklists/definition-of-done.md](../checklists/definition-of-done.md) — completion gate (AGENT-010) | ✅ |
 
 ## Conditional set by task type
@@ -36,9 +36,9 @@ stable from day one; until they exist, the engineering principles plus project A
 | Module/service structure, cross-component interfaces | [standards/architecture.md](../standards/architecture.md), [standards/application.md](../standards/application.md) | ✅ |
 | Runtime behavior: external calls, state, config, flags | [standards/application.md](../standards/application.md) | ✅ |
 | Reviewing a pull request | [checklists/code-review.md](../checklists/code-review.md) | ✅ |
-| An API contract | `standards/api.md` (+ trigger `public-api` rules) | Phase 3 |
-| Schema, migrations, persisted data | `standards/database.md` | Phase 3 |
-| Auth, secrets, PII, external surface | `checklists/security-review.md` (+ trigger `handles-pii` rules) | Phase 3 |
+| An API contract | [standards/api.md](../standards/api.md) (+ trigger `public-api` rules) | ✅ |
+| Schema, migrations, persisted data | [standards/database.md](../standards/database.md) | ✅ |
+| Auth, secrets, PII, uploads, external surface | [security.md](../standards/security.md) §2 triggers → [checklists/security-review.md](../checklists/security-review.md); threat model per SEC-027 → [templates/threat-model.md](../templates/threat-model.md) | ✅ |
 | Browser UI | `standards/web.md` | Phase 4 |
 | Mobile UI | `standards/mobile.md` | Phase 4 (stub until triggered) |
 | Pipelines, releases, environments | `standards/ci-cd.md`, `standards/infrastructure.md` | Phase 5 |
@@ -57,6 +57,18 @@ A project's profile tags (declared in its `CLAUDE.md`; registry in
 applies when its `Applies to` field contains `all`, one of the project's profile tags, or a trigger
 tag raised by the change at hand. A project without `mobile` in its profile never loads
 `standards/mobile.md` at all.
+
+## Security gates — when they fire (mechanical, not judgment)
+
+- **Security review required:** the change matches any SEC-026 trigger
+  ([security.md](../standards/security.md) §2) — auth changes, new/public entry points, new PII,
+  uploads/SSRF/interpreter flows, external integrations, tenant/session/token changes, secret
+  handling, classified-data migrations.
+- **Threat model required:** new system, or SEC-027 triggers (auth, PII, integration, tenancy)
+  not covered by the existing model.
+- Security rules are never self-exempted: no invented exceptions (AGENT-007), no disabling
+  controls to pass (AGENT-013), no silent downgrades (AGENT-003/005), suppressions only with
+  justification (CODE-011) — a security finding is suppressed by waiver or fix, never by edit.
 
 ## Escalation paths
 

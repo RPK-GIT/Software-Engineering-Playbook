@@ -128,15 +128,19 @@ obligation that such tooling exists, blocks, and passes is universal.
 - **Rationale:** Consumers pin against the contract a version number promises; breaking it silently converts every upgrade into a gamble ([P-8](../principles/engineering-principles.md)). Public interfaces of a library are documented at their point of definition (DOC-004 governs configuration keys; interface docs are part of the definition per this rule's review).
 - **Exceptions:** waiver-only
 
-## Proposed policy values (pending approval — not yet binding)
+### CODE-015: A function SHOULD NOT exceed a cyclomatic complexity of 10 or a length of 50 logical lines.
 
-**PROPOSED POLICY — complexity limits (backs CODE-010)**
-- **Value:** cyclomatic complexity ≤ 10 per function; function length ≤ 50 logical lines
-- **Reason:** both are long-established defaults with wide tooling support; ~10 branches is where human comprehension and test coverage of paths measurably degrade
-- **Risk of too low:** mechanical decomposition into artificial helpers that scatter logic and hurt readability
-- **Risk of too high:** the limit stops mattering; complex functions pass untested paths into production
-- **Scope:** all profiles; enforced via each project's static analysis (CODE-010); suppressible per CODE-011
-- **Status:** REQUIRES PLAYBOOK OWNER APPROVAL
+- **Level:** SHOULD NOT
+- **Enforcement:** ci
+- **Applies to:** all
+- **Rationale:** Accepted policy values (2026-08-11): a quality signal, not an absolute prohibition — exceeding the limits is permitted with a justification (CODE-011 suppression or recorded deviation per AGENT-009); these are the values the CODE-010 mechanism enforces ([P-9](../principles/engineering-principles.md)).
+- **Exceptions:** justified-deviation
+
+## Accepted policy values
+
+**ACCEPTED POLICY — complexity limits (2026-08-11, Playbook Owner)**
+- **Value:** cyclomatic complexity ≤ 10 per function; function length ≤ 50 logical lines (CODE-015)
+- **Terms of acceptance:** SHOULD-level quality signal, not an absolute prohibition; exceptions may be justified where appropriate; surfaced as static-analysis warnings via CODE-010
 
 ## Retirement log
 

@@ -130,15 +130,19 @@ external boundary, every declared failure mode, and every critical journey.
 - **Rationale:** Coverage is a cheap detector of *untested* code (its only honest use — high coverage proves little, but low coverage proves a gap); measurement precedes any floor, and the floor's value is a policy value (RULE-011) pending approval below ([P-9](../principles/engineering-principles.md)).
 - **Exceptions:** waiver-only
 
-## Proposed policy values (pending approval — not yet binding)
+### TEST-015: Changed-line test coverage per pull request SHOULD be at least 80 percent.
 
-**PROPOSED POLICY — coverage floor (would extend TEST-014 with a blocking gate)**
-- **Value:** changed-line coverage ≥ 80% per pull request (diff coverage), with no repository-wide floor initially
-- **Reason:** diff coverage targets exactly the code being introduced now, cannot be gamed by legacy code volume, and never demands retroactive test-writing campaigns; 80% leaves room for genuinely untestable lines without inviting whole untested modules
-- **Risk of too low:** new code ships systematically untested and TEST-001 loses its measurable backstop
-- **Risk of too high:** contributors write assertion-free tests to satisfy the number — coverage theater that is worse than the gap it hides; test *meaningfulness* remains a review judgment regardless
-- **Scope:** all profiles, enforced per pull request in CI; suppressible only by waiver
-- **Status:** REQUIRES PLAYBOOK OWNER APPROVAL
+- **Level:** SHOULD
+- **Enforcement:** ci
+- **Applies to:** all
+- **Rationale:** Accepted policy value (2026-08-11): the default quality expectation for new code, measured by the TEST-014 mechanism; deliberately no repository-wide floor. Deviations are permitted only where coverage is not meaningful (generated, configuration, or schema-heavy changes) and are recorded reviewably per AGENT-009 — never merely to avoid writing meaningful tests ([P-9](../principles/engineering-principles.md), [P-1](../principles/engineering-principles.md)).
+- **Exceptions:** justified-deviation — reviewer judges whether the justification is a coverage-meaningfulness case or test avoidance
+
+## Accepted policy values
+
+**ACCEPTED POLICY — coverage expectation (2026-08-11, Playbook Owner)**
+- **Value:** changed-line (diff) coverage ≥ 80% per pull request (TEST-015); no repository-wide floor
+- **Terms of acceptance:** default expectation with documented, reviewable exceptions where coverage is not meaningful; exceptions to avoid meaningful tests are not acceptable
 
 ## Interaction with other standards
 

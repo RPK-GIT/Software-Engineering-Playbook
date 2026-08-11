@@ -12,6 +12,7 @@
 - [ ] One logical change, right-sized — GIT-007
 - [ ] `## Standards deviations` section present and honest (agents: mandatory) — AGENT-009
 - [ ] Author's unresolved questions addressed — AGENT-011
+- [ ] Security-review triggers checked — if any fired, route to [security review](security-review.md) — SEC-026
 
 ## Design and structure (the judgment core)
 

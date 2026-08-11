@@ -45,10 +45,10 @@
 | `standards/git.md` (GIT) | 2 | Yes | ✅ | Branching, protection, commits, PR flow, releases, reverts (12 rules) |
 | `standards/repository.md` (REPO) | 2 | Yes | ✅ | Required files, tracked-vs-untracked boundary, lockfiles, ownership (10 rules) |
 | `standards/documentation.md` (DOC) | 2 | Yes | ✅ | What must be documented, where; ADR-trigger list (8 rules) |
-| `standards/security.md` (SEC) | 3 | Yes | 📋 | Authn/z, secrets, input handling, PII, dependency vulns |
-| `standards/api.md` (API) | 3 | Profile: api-service | 📋 | Contracts, versioning, error shape, pagination |
-| `standards/database.md` (DB) | 3 | Profile: uses-database | 📋 | Modeling, migration safety, transactions, retention |
-| `standards/observability.md` (OBS) | 3 | Yes | 📋 | Structured logging, metrics/SLO conventions, tracing, alerts |
+| `standards/security.md` (SEC) | 3 | Yes | ✅ | Authn/z, input handling, secret management, PII, scanning, review/threat-model triggers (27 rules) |
+| `standards/api.md` (API) | 3 | Profile: api-service | ✅ | Contract-first, versioning, standard error contract, pagination, idempotency declaration (13 rules) |
+| `standards/database.md` (DB) | 3 | Profile: uses-database | ✅ | Migration discipline, keys/constraints, isolation, indexes, retention mechanism (12 rules) |
+| `standards/observability.md` (OBS) | 3 | Yes | ✅ | Structured logging, levels, correlation, telemetry content limits, health, metrics, alerts (11 rules) |
 | `standards/web.md` (WEB) | 4 | Profile: web | 📋 | Accessibility, performance budgets, assets, browser policy |
 | `standards/mobile.md` (MOB) | 4 | Profile: mobile | 🧊 | Mobile-specific rules; authored when first mobile project is real |
 | `standards/ci-cd.md` (CI) | 5 | Yes | 📋 | Pipeline gates, artifact versioning, release/rollback |
@@ -76,7 +76,7 @@
 | `checklists/definition-of-done.md` | Work item claimed complete | 2 (extended 3–5) | ✅ |
 | `checklists/code-review.md` | PR opened | 2 | ✅ |
 | `checklists/new-repository.md` | Repository created | 2 | ✅ |
-| `checklists/security-review.md` | Auth/PII/external-surface change | 3 | 📋 |
+| `checklists/security-review.md` | SEC-026 trigger fired | 3 | ✅ |
 | `checklists/production-readiness.md` | First deploy / major change | 5 | 📋 |
 | `checklists/incident-response.md` | Incident declared | 5 | 📋 |
 
@@ -89,13 +89,14 @@
 | `templates/pull-request.md` | 2 | ✅ | AGENT-009 deviations section, GIT-007 scope |
 | `templates/readme.md` | 2 | ✅ | DOC-001, REPO-007 |
 | `templates/claude-md.md` | 2 (finalized 6) | ✅ | App-repo agent entry: profile declaration, pinning, ADR links |
-| `templates/threat-model.md` | 3 | 📋 | SEC trigger rules |
+| `templates/threat-model.md` | 3 | ✅ | SEC-027 |
 | `templates/runbook.md` | 5 | 📋 | OPS rules |
 | `templates/postmortem.md` | 5 | 📋 | OPS rules |
 
 ---
 
 **Totals:** 46 active documents (6 root + 4 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
-**Phase 2 complete (2026-08-11):** 30 documents exist (28 ✅ + 2 🚧 seeds); 106 normative rules
-across 9 rule-bearing documents. Next up: Phase 3 — Security & Reliability — see
+**Phase 3 complete (2026-08-11) — v1.0.0 "Production Engineering Foundation":** 36 documents exist
+(34 ✅ + 2 🚧 seeds); 173 normative rules across 13 rule-bearing documents. Backend/API/service
+development may begin; web and mobile need Phase 4. Next up: Phase 4 — see
 [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).

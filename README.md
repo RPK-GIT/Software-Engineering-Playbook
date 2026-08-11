@@ -3,7 +3,9 @@
 The single source of truth for how we build, ship, and run production software — across projects,
 platforms, and technology stacks, consumable by humans and AI coding agents alike.
 
-**Status:** Phase 1 (Foundation) complete · Version: see git tags · Roadmap: [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md)
+**Status:** v1.0.0 — Production Engineering Foundation (Phases 1–3 complete). Backend/API/service
+development may begin; web and mobile projects additionally need Phase 4. Roadmap:
+[PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md)
 
 ## How this repository is organized
 

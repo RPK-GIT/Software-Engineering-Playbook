@@ -239,8 +239,18 @@ enforceability varies per rule and is recorded in the enforcement matrix. Scope 
 | Accessibility | web.md, mobile.md | application.md |
 | Privacy / PII | security.md (classification + handling) | database.md (cites SEC IDs for retention) |
 | Secrets — presence in version control | repository.md (REPO-002, REPO-003) | git.md (GIT-009 cites the purge case) |
-| Secrets — management, delivery, rotation, scanning policy | security.md (Phase 3) | repository.md |
+| Secrets — management, delivery, rotation, scanning policy | security.md (SEC-009…011, SEC-020) | repository.md |
 | Agent-specific git prohibitions | agents/ai-agent-standards.md (AGENT-013, AGENT-014) | git.md (owns the universal workflow rules) |
+| Authentication & authorization | security.md (SEC-001…004) | api.md, application.md (cite SEC IDs) |
+| Input validation — trust boundaries | security.md (SEC-005…008) | coding.md; business invariants are APP-008 |
+| Audit events — which must exist | security.md (SEC-022) | observability.md (owns their *format*: OBS-001/002) |
+| Telemetry content — sensitive data | observability.md (OBS-005) | security.md (checklist cites OBS-005) |
+| Correlation identifiers | observability.md (OBS-003/004) | api.md (API-005 exposes them) |
+| Encryption (transit + rest) | security.md (SEC-016/017) | database.md, infrastructure.md |
+| Data retention — limits vs mechanism | security.md (SEC-015: limits) / database.md (DB-011: mechanism) | — |
+| Backups & restore | infrastructure.md (Phase 5) | database.md (deliberately defines no backup rules) |
+| Vulnerability & dependency scanning | security.md (SEC-019…021) | ci-cd.md (pipeline *runs* the scans) |
+| Rate limiting & abuse controls | security.md (SEC-023) | api.md |
 | Releases & versioning | ci-cd.md | repository.md |
 | Dependency selection | coding.md | — |
 | Dependency vulnerabilities | security.md | ci-cd.md (pipeline *runs* the scan; rule lives in SEC) |

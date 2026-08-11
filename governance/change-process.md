@@ -23,9 +23,11 @@ The playbook is versioned with **Semantic Versioning through annotated git tags*
 
 Additional provisions:
 
-- The version is `0.y.z` while the playbook is incomplete; **`v1.0.0` is tagged when Phases 1–3 are
-  complete** (the point at which application development may begin, per
-  [PLAYBOOK-ROADMAP.md](../PLAYBOOK-ROADMAP.md)).
+- **`v1.0.0` = "Production Engineering Foundation"**: tagged at Phase 3 completion. It certifies
+  the core architecture, engineering, security, API, database, observability, and reliability
+  foundations for backend/service development — not completeness of profile-specific standards
+  (web and mobile projects additionally require their Phase 4 standards; see
+  [PLAYBOOK-ROADMAP.md](../PLAYBOOK-ROADMAP.md) "What v1.0.0 means").
 - Every tag is annotated with a summary of the normative changes it contains (rule IDs added /
   changed / deprecated / retired).
 - Project repositories pin a tag; see [how-to-use.md](how-to-use.md) for the upgrade contract.

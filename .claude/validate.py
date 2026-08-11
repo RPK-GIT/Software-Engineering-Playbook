@@ -129,6 +129,18 @@ for f in md_files:
     for m in tech.finditer(open(f, encoding='utf-8').read()):
         issues.append(f"TECH {f}: '{m.group()}'")
 
+# --- V10: numeric policy status (report; pending policies are legitimate, silent ones are not) ---
+pol_pending, pol_accepted = [], []
+for f in md_files:
+    text = open(f, encoding='utf-8').read()
+    pol_pending += [f"{f}: {m}" for m in re.findall(r'\*\*PROPOSED POLICY — ([^*]+)\*\*', text)]
+    pol_accepted += [f"{f}: {m}" for m in re.findall(r'\*\*ACCEPTED (?:POLICY|CONVENTION) — ([^*]+)\*\*', text)]
+print(f"\nV10 policies - accepted: {len(pol_accepted)}, pending owner approval: {len(pol_pending)}")
+for p in pol_accepted:
+    print(f"  ACCEPTED {p}")
+for p in pol_pending:
+    print(f"  PENDING  {p}")
+
 print("\n" + "=" * 50)
 if issues:
     print(f"ISSUES ({len(issues)}):")

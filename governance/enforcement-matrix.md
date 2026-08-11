@@ -29,6 +29,19 @@
 | RULE-011 | _rule-format.md | MUST | all | Playbook PR review | review-only | no | yes | yes | yes | 1 |
 | RULE-012 | _rule-format.md | SHOULD | all | Playbook PR review | review-only | no | yes | yes | no | 1 |
 | RULE-013 | _rule-format.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 1 |
+| API-001 | api.md | MUST | api-service | Contract presence/lint check; contract *quality* needs review | partial | partial | yes | spot-check | yes | 3 |
+| API-002 | api.md | MUST NOT | api-service, public-api | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-003 | api.md | MUST | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-004 | api.md | MUST | api-service, public-api | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-005 | api.md | MUST | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-006 | api.md | MUST NOT | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-007 | api.md | MUST | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-008 | api.md | MUST | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-009 | api.md | SHOULD | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | no | 3 |
+| API-010 | api.md | MUST | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-011 | api.md | MUST | api-service | Code review; architecture review for cross-component contracts | judgment | no | assists | yes | yes | 3 |
+| API-012 | api.md | MUST | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | yes | 3 |
+| API-013 | api.md | SHOULD | api-service | Code review; architecture review for cross-component contracts | review-only | no | yes | yes | no | 3 |
 | APP-001 | application.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | APP-002 | application.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | APP-003 | application.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
@@ -64,6 +77,19 @@
 | CODE-012 | coding.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | CODE-013 | coding.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | CODE-014 | coding.md | MUST NOT | library | Code review | review-only | no | yes | yes | yes | 2 |
+| CODE-015 | coding.md | SHOULD NOT | all | Complexity/length warning in static analysis (values accepted 2026-08-11) | partial | partial | yes | spot-check | no | 2 |
+| DB-001 | database.md | MUST | uses-database | Migration-tool presence/ordering check; migration *content* needs review | partial | partial | yes | spot-check | yes | 3 |
+| DB-002 | database.md | MUST | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
+| DB-003 | database.md | MUST NOT | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
+| DB-004 | database.md | MUST | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
+| DB-005 | database.md | MUST | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
+| DB-006 | database.md | MUST | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
+| DB-007 | database.md | MUST | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
+| DB-008 | database.md | MUST | uses-database | Code review; security review for classified-data migrations | judgment | no | assists | yes | yes | 3 |
+| DB-009 | database.md | SHOULD | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | no | 3 |
+| DB-010 | database.md | SHOULD | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | no | 3 |
+| DB-011 | database.md | MUST | uses-database, handles-pii | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
+| DB-012 | database.md | MUST | uses-database | Code review; security review for classified-data migrations | review-only | no | yes | yes | yes | 3 |
 | DOC-001 | documentation.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | DOC-002 | documentation.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | DOC-003 | documentation.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
@@ -84,8 +110,21 @@
 | GIT-010 | git.md | MUST | all | Tag presence check in release pipeline | auto | yes | yes | no | yes | 2 |
 | GIT-011 | git.md | SHOULD | all | Code review | judgment | no | assists | yes | no | 2 |
 | GIT-012 | git.md | MUST | all | Same platform gates as regular changes | auto | yes | yes | no | yes | 2 |
+| GIT-013 | git.md | SHOULD NOT | all | PR-size warning in CI (accepted 2026-08-11; never auto-blocking) | partial | partial | yes | spot-check | no | 2 |
+| GIT-014 | git.md | SHOULD | all | Code review | review-only | no | yes | yes | no | 2 |
+| OBS-001 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-002 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-003 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-004 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-005 | observability.md | MUST NOT | all | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-006 | observability.md | MUST | all | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-007 | observability.md | MUST | api-service, web | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-008 | observability.md | MUST | api-service, web | Code review | review-only | no | yes | yes | yes | 3 |
+| OBS-009 | observability.md | SHOULD | api-service | Code review | review-only | no | yes | yes | no | 3 |
+| OBS-010 | observability.md | MUST | all | Code review | judgment | no | assists | yes | yes | 3 |
+| OBS-011 | observability.md | SHOULD | api-service, web | Code review | judgment | no | assists | yes | no | 3 |
 | REPO-001 | repository.md | MUST | all | Required-file presence check (new-repository checklist / CI) | auto | yes | yes | no | yes | 2 |
-| REPO-002 | repository.md | MUST NOT | all | Secret scanning - tooling policy arrives Phase 3 (security.md); interim: review vigilance | partial | partial | yes | spot-check | yes | 2 |
+| REPO-002 | repository.md | MUST NOT | all | Secret scanning per SEC-020; tooling selection per project; review vigilance meanwhile | partial | partial | yes | spot-check | yes | 2 |
 | REPO-003 | repository.md | MUST NOT | all | .gitignore + tracked-file pattern check | auto | yes | yes | no | yes | 2 |
 | REPO-004 | repository.md | MUST | all | Template-file presence check; key completeness needs review | partial | partial | yes | spot-check | yes | 2 |
 | REPO-005 | repository.md | MUST NOT | all | .gitignore + tracked-file pattern check | auto | yes | yes | no | yes | 2 |
@@ -94,6 +133,33 @@
 | REPO-008 | repository.md | MUST | all | CODEOWNERS coverage check | auto | yes | yes | no | yes | 2 |
 | REPO-009 | repository.md | MUST | all | Pipeline-config presence check | auto | yes | yes | no | yes | 2 |
 | REPO-010 | repository.md | SHOULD | all | Platform auto-delete setting; stale-branch detection is periodic | partial | partial | yes | spot-check | no | 2 |
+| SEC-001 | security.md | MUST | web, mobile, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-002 | security.md | MUST | web, mobile, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-003 | security.md | MUST NOT | web, mobile, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-004 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | judgment | no | assists | yes | yes | 3 |
+| SEC-005 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-006 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-007 | security.md | MUST | web, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-008 | security.md | MUST NOT | web, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-009 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-010 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-011 | security.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 3 |
+| SEC-012 | security.md | MUST | web, mobile, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-013 | security.md | MUST | web, mobile, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-014 | security.md | MUST | uses-database | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-015 | security.md | MUST NOT | handles-pii | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-016 | security.md | MUST | handles-pii | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-017 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-018 | security.md | MUST NOT | uses-database | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-019 | security.md | MUST | all | Dependency vulnerability scanner in CI - tooling selection per project (ADR) | partial | partial | yes | spot-check | yes | 3 |
+| SEC-020 | security.md | MUST | all | Secret scanner in CI - tooling selection per project (ADR) | partial | partial | yes | spot-check | yes | 3 |
+| SEC-021 | security.md | SHOULD | all | SAST in CI where the ecosystem has viable tooling | partial | partial | yes | spot-check | no | 3 |
+| SEC-022 | security.md | MUST | web, mobile, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-023 | security.md | MUST | web, api-service, public-api | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-024 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-025 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-026 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
+| SEC-027 | security.md | MUST | all | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
 | TEST-001 | testing.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | TEST-002 | testing.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | TEST-003 | testing.md | MUST | all | CI reruns / flake detection - detects, cannot prove absence | partial | partial | yes | spot-check | yes | 2 |
@@ -108,6 +174,7 @@
 | TEST-012 | testing.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | TEST-013 | testing.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | TEST-014 | testing.md | MUST | all | Coverage measurement + report step in CI | auto | yes | yes | no | yes | 2 |
+| TEST-015 | testing.md | SHOULD | all | Diff-coverage report/warning (accepted 2026-08-11); exceptions per AGENT-009 | partial | partial | yes | spot-check | no | 2 |
 | AGENT-001 | ai-agent-standards.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 1 |
 | AGENT-002 | ai-agent-standards.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 1 |
 | AGENT-003 | ai-agent-standards.md | MUST | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 1 |
@@ -123,11 +190,13 @@
 | AGENT-013 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 2 |
 | AGENT-014 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 2 |
 
-**Totals:** 106 rules - auto: 23 · judgment: 9 · partial: 10 · process: 6 · review-only: 58
+**Totals:** 173 rules - auto: 23 · judgment: 14 · partial: 18 · process: 7 · review-only: 111
 
 ## Tooling gaps (tracked for Phase 5/6)
 
-Rules classed `partial` above are the CI-automation backlog. Notable gaps: secret scanning
-(REPO-002 - policy owner is Phase 3 security.md), PR deviation-section lint (AGENT-009),
-boundary-declaration tooling guidance (ARCH-006), commit lint (GIT-006). A `partial` class
-is a statement that review currently carries part of the load - not that the rule is optional.
+Rules classed `partial` above are the CI-automation backlog. Notable gaps: scanner selection
+per project via ADR (SEC-019/020/021, enforcing REPO-002), API contract diffing (API-001/002),
+migration linting (DB-001), PR deviation-section lint (AGENT-009), boundary-declaration
+tooling (ARCH-006), commit lint (GIT-006). Structured-logging lint (OBS-001) has no
+deterministic general implementation and is honestly review-classed. A `partial` class means
+review currently carries part of the load - not that the rule is optional.

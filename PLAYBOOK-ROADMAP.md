@@ -4,11 +4,24 @@
 > [PLAYBOOK-ARCHITECTURE.md](PLAYBOOK-ARCHITECTURE.md); the full inventory with per-document status is
 > [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md).
 >
-> **Current phase: Phase 2 COMPLETE (2026-08-11). Next: Phase 3 — Security & Reliability.**
-> Phase 2 exit criteria verified: a new repository can be created fully compliant
-> ([checklists/new-repository.md](checklists/new-repository.md)); every Phase 2 MUST is in the
-> [enforcement matrix](governance/enforcement-matrix.md); the Definition of Done resolves only to
-> live rule IDs (validation V7).
+> **Current phase: Phase 3 COMPLETE (2026-08-11) — v1.0.0 "Production Engineering Foundation". Next: Phase 4 — Web & Mobile.**
+> Phase 3 exit criteria verified: security-review gate defined with trigger list and owner role
+> (SEC-026, Playbook Owner / Principal Architect); every Phase 3 MUST in the
+> [enforcement matrix](governance/enforcement-matrix.md); all checklists resolve to live rule IDs.
+
+## What v1.0.0 means — and does not mean
+
+`v1.0.0` = **Production Engineering Foundation**: the core architecture, engineering, security,
+API, database, observability, and reliability foundations required for production-oriented
+backend/service development exist and are enforced. It does **not** mean all profile-specific or
+technology-specific standards are complete. Consequences, by profile:
+
+| Project profile | May development begin at v1.0.0? |
+|---|---|
+| `api-service`, `library`, backend services | **Yes** — applicable Phase 1–3 standards suffice |
+| `web` | Only alongside Phase 4 — applicable Web standards must additionally be satisfied |
+| `mobile` | Only after the mobile stub is expanded (Phase 4, trigger-gated) |
+| Any profile needing infra/platform standards | The applicable Phase 5 standards bind when their applicability requires them |
 
 ## Sequencing logic
 
@@ -94,8 +107,9 @@ enforcement matrix; DoD resolves only to live rule IDs.
 | `templates/threat-model.md` | Referenced by SEC trigger rules |
 | Enforcement matrix update | — |
 
-**Exit criteria:** Phases 1–3 complete = **application development may begin**. Security review gate is
-defined with a named owner.
+**Exit criteria:** Phases 1–3 complete = **v1.0.0, Production Engineering Foundation** —
+backend/API/service development may begin; web and mobile additionally require their Phase 4
+standards (see "What v1.0.0 means" above). Security review gate is defined with an owning role.
 
 ## PHASE 4 — Web & Mobile
 

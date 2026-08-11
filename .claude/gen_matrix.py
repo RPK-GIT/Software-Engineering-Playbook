@@ -9,18 +9,27 @@ import re, glob, os
 PARTIAL = {
     'ARCH-006': 'Dependency-rule check; requires per-project boundary declaration + tooling',
     'CODE-011': 'Suppression-comment lint; tooling varies by ecosystem',
+    'CODE-015': 'Complexity/length warning in static analysis (values accepted 2026-08-11)',
     'GIT-006': 'Commit-message lint in CI',
     'GIT-008': 'Platform merge-method setting; deliberate exceptions possible',
+    'GIT-013': 'PR-size warning in CI (accepted 2026-08-11; never auto-blocking)',
     'TEST-003': 'CI reruns / flake detection - detects, cannot prove absence',
     'TEST-004': 'Test-order randomization in CI - detects, cannot prove absence',
-    'REPO-002': 'Secret scanning - tooling policy arrives Phase 3 (security.md); interim: review vigilance',
+    'TEST-015': 'Diff-coverage report/warning (accepted 2026-08-11); exceptions per AGENT-009',
+    'REPO-002': 'Secret scanning per SEC-020; tooling selection per project; review vigilance meanwhile',
     'REPO-004': 'Template-file presence check; key completeness needs review',
     'REPO-010': 'Platform auto-delete setting; stale-branch detection is periodic',
     'AGENT-009': 'PR-description section lint - tooling to be built; interim: review',
+    'SEC-019': 'Dependency vulnerability scanner in CI - tooling selection per project (ADR)',
+    'SEC-020': 'Secret scanner in CI - tooling selection per project (ADR)',
+    'SEC-021': 'SAST in CI where the ecosystem has viable tooling',
+    'API-001': 'Contract presence/lint check; contract *quality* needs review',
+    'DB-001': 'Migration-tool presence/ordering check; migration *content* needs review',
 }
 # Rules where the human check is expert judgment (not an itemizable checklist)
 JUDGMENT = {'ARCH-001','ARCH-002','ARCH-003','ARCH-008','ARCH-009',
-            'CODE-004','CODE-009','TEST-011','GIT-011'}
+            'CODE-004','CODE-009','TEST-011','GIT-011',
+            'SEC-004','DB-008','OBS-010','OBS-011','API-011'}
 # Mechanism text overrides (default derived from enforcement + prefix)
 MECH = {
     'GIT-002': 'Platform branch protection (PR-only)',
@@ -51,8 +60,13 @@ GATE_BY_PREFIX = {
     'CODE': 'Code review', 'APP': 'Code review', 'TEST': 'Code review',
     'DOC': 'Code review', 'GIT': 'Code review', 'REPO': 'New-repository checklist / code review',
     'RULE': 'Playbook PR review', 'AGENT': 'Review of agent output (PR review)',
+    'SEC': 'Security review (SEC-026 triggers) / code review',
+    'API': 'Code review; architecture review for cross-component contracts',
+    'DB': 'Code review; security review for classified-data migrations',
+    'OBS': 'Code review',
 }
 PHASE1 = re.compile(r'^(RULE-\d+|AGENT-0(0\d|1[012]))$')
+PHASE3_PREFIXES = {'SEC', 'API', 'DB', 'OBS'}
 
 rules = []
 heading = re.compile(r'^### ([A-Z]{2,6}-[0-9]{3}): (.+)$', re.M)
@@ -82,7 +96,12 @@ def row(rid, doc, lvl, enf, app):
         cls, ci, ai, human = 'process', 'no', 'follows', 'yes'
         mech = MECH.get(rid, 'Process step (owner / quarterly review)')
     blocking = 'yes' if lvl in ('MUST', 'MUST NOT') else 'no'
-    phase = '1' if PHASE1.match(rid) else '2'
+    if PHASE1.match(rid):
+        phase = '1'
+    elif prefix in PHASE3_PREFIXES:
+        phase = '3'
+    else:
+        phase = '2'
     return f"| {rid} | {doc} | {lvl} | {app} | {mech} | {cls} | {ci} | {ai} | {human} | {blocking} | {phase} |"
 
 out = []
@@ -121,10 +140,12 @@ out.append(f"**Totals:** {len(rules)} rules - " + " · ".join(f"{k}: {v}" for k,
 out.append("")
 out.append("## Tooling gaps (tracked for Phase 5/6)")
 out.append("")
-out.append("Rules classed `partial` above are the CI-automation backlog. Notable gaps: secret scanning")
-out.append("(REPO-002 - policy owner is Phase 3 security.md), PR deviation-section lint (AGENT-009),")
-out.append("boundary-declaration tooling guidance (ARCH-006), commit lint (GIT-006). A `partial` class")
-out.append("is a statement that review currently carries part of the load - not that the rule is optional.")
+out.append("Rules classed `partial` above are the CI-automation backlog. Notable gaps: scanner selection")
+out.append("per project via ADR (SEC-019/020/021, enforcing REPO-002), API contract diffing (API-001/002),")
+out.append("migration linting (DB-001), PR deviation-section lint (AGENT-009), boundary-declaration")
+out.append("tooling (ARCH-006), commit lint (GIT-006). Structured-logging lint (OBS-001) has no")
+out.append("deterministic general implementation and is honestly review-classed. A `partial` class means")
+out.append("review currently carries part of the load - not that the rule is optional.")
 out.append("")
 
 open('governance/enforcement-matrix.md', 'w', encoding='utf-8', newline='\n').write("\n".join(out))
