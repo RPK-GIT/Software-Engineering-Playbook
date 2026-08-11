@@ -24,11 +24,14 @@ documents. This file routes; it defines no rules (RULE-007).
    blocks, registered prefixes and tags, one atomic requirement per rule.
 4. Normative changes require the process in [governance/change-process.md](governance/change-process.md)
    (RFC, owner approval, semver tag). Non-normative fixes are direct PRs.
-5. Before finishing any edit: run the validation capabilities V1–V9
-   (change-process.md §5) — link integrity, rule-block format, ID uniqueness, registry conformance,
-   rule placement, keyword discipline, citation integrity, matrix completeness, index consistency —
-   and update [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md), [GLOSSARY.md](GLOSSARY.md), and
-   [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md) statuses as needed.
+5. Before finishing any edit: run the self-CI locally — `python tools/validate.py` (blocking
+   invariants V1–V15) and `python tools/gen_matrix.py` (then confirm no diff in
+   `governance/enforcement-matrix.md`). The same checks run as required CI on GitHub
+   ([ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md),
+   `.github/workflows/validate.yml`). Update [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md),
+   [GLOSSARY.md](GLOSSARY.md), and [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md) statuses as needed.
+6. Never modify playbook rules to make an implementation compliant (AGENT-021) — rule defects
+   are proposed via RFC as their own change.
 
 ## Repository conventions
 

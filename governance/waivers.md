@@ -10,6 +10,11 @@
 A MUST-level requirement may be waived **only by the designated Playbook Owner / Principal
 Architect**. There are no other approvers and no delegation.
 
+> **Current status of the role:** defined but not yet assigned to a person. Consequence: **no
+> real waiver can be approved until a person holds the role** — a blocked mandatory requirement
+> therefore currently blocks, full stop. Assigning the person is a governance decision recorded
+> as an ADR; this is deliberate, not an oversight.
+
 Developers and AI coding agents **may**: identify a potential need for a waiver, document the
 justification, identify the affected standards and rule IDs, and propose compensating controls.
 They **may not** approve a waiver — an AI agent granting or assuming a waiver is itself a

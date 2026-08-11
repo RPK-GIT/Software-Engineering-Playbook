@@ -3,9 +3,11 @@
 The single source of truth for how we build, ship, and run production software — across projects,
 platforms, and technology stacks, consumable by humans and AI coding agents alike.
 
-**Status:** v1.0.0 — Production Engineering Foundation (Phases 1–3 complete). Backend/API/service
-development may begin; web and mobile projects additionally need Phase 4. Roadmap:
-[PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md)
+**Status: COMPLETE — v4.0.0, all six phases done; maintenance mode.** 263 rules across 17
+standards; backend/API/service/library/web development fully supported; mobile trigger-gated.
+Self-CI enforces the playbook's own governance invariants on every change
+([ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md)). Full status, guarantees, and
+limitations: [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md) "Final status".
 
 ## How this repository is organized
 

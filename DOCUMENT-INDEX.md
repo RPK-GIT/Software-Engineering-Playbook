@@ -59,8 +59,8 @@
 
 | Document | Phase | Mandatory | Status | Purpose |
 |---|---|---|---|---|
-| `agents/ai-agent-standards.md` (AGENT) | 1 (seed), 6 (complete) | Yes | 🚧 | Agent operating rules AGENT-001…012: discovery, conflicts, waivers, deviations, verification |
-| `agents/context-map.md` | 1 (seed), 6 (complete) | Yes | 🚧 | Task type × project profile → files to load |
+| `agents/ai-agent-standards.md` (AGENT) | 1 (seed), 6 (complete) | Yes | ✅ | Agent operating rules AGENT-001…021 + behavior coverage map |
+| `agents/context-map.md` | 1 (seed), 6 (complete) | Yes | ✅ | Context-budget tiers (always/conditional/triggered/reference) + deterministic routing |
 
 ## decisions/
 
@@ -68,6 +68,7 @@
 |---|---|---|---|---|
 | `decisions/README.md` | 1 | Yes | ✅ | ADR index; org-level vs project-level scoping rules |
 | `decisions/0001-record-architecture-decisions.md` | 1 | Yes | ✅ | Founding meta-ADR adopting the ADR practice |
+| `decisions/0002-github-actions-for-playbook-self-ci.md` | 6 | Yes | ✅ | Self-CI platform selection, security model, and gate classification |
 
 ## checklists/ (views — cite rule IDs only)
 
@@ -96,7 +97,10 @@
 ---
 
 **Totals:** 46 active documents (6 root + 4 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
-**Phase 5 complete (2026-08-11):** all 46 active documents now exist (43 ✅ + 2 🚧 seeds + 1 🧊 stub); 259
-normative rules across 17 rule-bearing documents. Production deployment is now fully gated
-end-to-end. Remaining: Phase 6 — AI Agent Governance (agent-standard completion, context-map
-finalization, playbook self-CI tooling) — see [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).
+**Phase 6 complete (2026-08-11) — ALL PLANNED PHASES DONE:** 47 active documents (46 ✅ + 1 🧊
+trigger-gated mobile stub); 263 normative rules across 17 rule-bearing documents; 6 accepted
+policies, 0 pending. Self-CI: `tools/validate.py` (V1–V15, blocking) + `tools/gen_matrix.py`
+(matrix generation/drift), run locally and as required repository CI on the platform selected in
+[ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md)
+(`.github/workflows/validate.yml`). Status and guarantees:
+[PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).

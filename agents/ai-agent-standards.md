@@ -1,8 +1,8 @@
 # AI Coding Agent Standards (AGENT)
 
-> **Class:** Standard · **Rule prefix:** `AGENT` · **Status:** Active — **seed**
-> Seeded in Phase 1 so agent behavior is governed from day one; completed and tuned in Phase 6
-> ([PLAYBOOK-ROADMAP.md](../PLAYBOOK-ROADMAP.md)). Seed rules are fully binding.
+> **Class:** Standard · **Rule prefix:** `AGENT` · **Status:** Active — **complete** (Phase 6)
+> Seeded in Phase 1, extended in Phases 2/5, completed in Phase 6 after a full behavior-coverage
+> audit (coverage map at the end of this document).
 >
 > This document owns **agent behavior only**. Agents read the same engineering standards humans
 > do — no engineering rule is defined or restated here (RULE-007, RULE-008). Navigation lives in
@@ -145,6 +145,65 @@
 - **Applies to:** all
 - **Rationale:** The complement of AGENT-015/016: an agent that prepares a production-affecting change and does not flag the authorization boundary invites a human to rubber-stamp it as routine; the flag is what keeps the human gate a real gate (CI-010) ([P-2](../principles/engineering-principles.md)).
 - **Exceptions:** none
+
+### AGENT-018: An AI agent MUST obtain a profile declaration before performing profile-dependent work in a project whose profile is undeclared.
+
+- **Level:** MUST
+- **Enforcement:** manual
+- **Applies to:** all
+- **Rationale:** Applicability resolution is mechanical only when the profile exists (RULE-005); guessing a profile silently loads the wrong rulebook and produces confident non-compliance. Work that is profile-independent (`all`-tagged rules) may proceed meanwhile ([P-2](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
+### AGENT-019: An AI agent MUST NOT invent, assume, or claim playbook authority for a standard, rule, or architectural decision that is not recorded.
+
+- **Level:** MUST NOT
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** Playbook silence has a defined path — ADRs, then principles, then a recorded decision ([governance/how-to-use.md](../governance/how-to-use.md) §4); an undocumented assumption is never an approved decision, and a decision matching a DOC-003 trigger gets a drafted ADR and a stop for approval, not a fait accompli. Forced assumptions are surfaced per AGENT-011 ([P-2](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
+### AGENT-020: An AI agent MUST NOT delete, disable, skip, or weaken tests or checks in order to make its own work pass.
+
+- **Level:** MUST NOT
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** Green-by-deletion is the test-file variant of gate-tampering (AGENT-013 covers the config variant). Legitimate paths exist and are not this: quarantining a flaky test under a tracked item (TEST-013), or changing tests *because the specified behavior changed*, reviewed as part of that change ([P-1](../principles/engineering-principles.md), [P-9](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
+### AGENT-021: An AI agent MUST NOT modify playbook documents to make its own implementation compliant.
+
+- **Level:** MUST NOT
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** An agent that can edit the rulebook it is graded against has no rulebook; AGENT-007 closes the waiver door, AGENT-013 the project-governance door — this closes the playbook door. Genuine rule defects found during work are proposed through [governance/change-process.md](../governance/change-process.md) as their own change, decided by the Playbook Owner, never bundled with the work they would unblock ([P-5](../principles/engineering-principles.md)).
+- **Exceptions:** none
+
+## Behavior coverage map (non-normative)
+
+The Phase 6 audit verified every required agent behavior resolves to a binding rule — cited, not
+duplicated:
+
+| Behavior | Covered by |
+|---|---|
+| Entry-point discovery | AGENT-001 |
+| Profile detection / undeclared profile | AGENT-002, AGENT-018 |
+| Task classification & applicability | AGENT-002 + [context-map.md](context-map.md) |
+| Rule precedence & conflict resolution | AGENT-003 (+ PLAYBOOK-ARCHITECTURE §2.2) |
+| Ambiguity | AGENT-004 |
+| Mandatory-rule violations | AGENT-005, AGENT-006 |
+| Waivers | AGENT-007 (never approve), AGENT-008 (may draft) |
+| Deviation recording | AGENT-009 |
+| Security-sensitive work & threat models | SEC-026/027 triggers via context-map; no agent exemptions (AGENT-005) |
+| Architecture & technology decisions | DOC-003 + AGENT-019 |
+| Invented standards / undocumented assumptions | AGENT-019, AGENT-011 |
+| Testing integrity | TEST-001…015 + AGENT-020 |
+| CI / gate integrity | GIT-005 + AGENT-013, AGENT-020 |
+| Documentation updates | DOC-002 |
+| Migrations, deployment, production | CI-009, AGENT-015…017 |
+| Git operations | GIT-001…014 + AGENT-013/014 |
+| Playbook self-modification | AGENT-021 |
+| Completion verification | AGENT-010 + [checklists/definition-of-done.md](../checklists/definition-of-done.md) |
+| Reporting | AGENT-009, AGENT-011, AGENT-012, AGENT-017 |
 
 ## Retirement log
 

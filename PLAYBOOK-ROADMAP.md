@@ -4,12 +4,13 @@
 > [PLAYBOOK-ARCHITECTURE.md](PLAYBOOK-ARCHITECTURE.md); the full inventory with per-document status is
 > [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md).
 >
-> **Current phase: Phase 5 COMPLETE (2026-08-11). Next: Phase 6 — AI Agent Governance.**
-> Phase 5 exit criteria verified: first production deployment can be gated end-to-end
-> ([checklists/production-readiness.md](checklists/production-readiness.md) aggregates every
-> domain); every `ci`-tagged MUST has a specified check in the
-> [enforcement matrix](governance/enforcement-matrix.md) (implementation per project remains
-> pending where classed `partial` — honestly recorded, not claimed).
+> **ALL SIX PHASES COMPLETE (2026-08-11). The playbook is release v4.0.0 and enters maintenance
+> mode** — quarterly reviews per [change-process](governance/change-process.md) §4, changes via
+> RFC only. Phase 6 exit criteria verified: "build this feature" resolves to the correct standard
+> set without human routing ([context-map](agents/context-map.md) + pilot walkthrough below);
+> the playbook's own CI rejects structural defects (`tools/validate.py` V1–V15 blocking +
+> matrix-drift gate, per [ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md));
+> review cadence defined. Final status: see "Final status" at the end of this document.
 > Phase 3 exit criteria verified: security-review gate defined with trigger list and owner role
 > (SEC-026, Playbook Owner / Principal Architect); every Phase 3 MUST in the
 > [enforcement matrix](governance/enforcement-matrix.md); all checklists resolve to live rule IDs.
@@ -162,6 +163,62 @@ specified pipeline check (implementation may still be pending in app repos).
 playbook's own CI rejects structural defects; quarterly review cadence active per change-process.
 
 ---
+
+## Final status (post-Phase 6, v4.0.0)
+
+**Inventory:** 47 active documents (46 complete + 1 trigger-gated mobile stub) · 263 normative
+rules in 17 rule-bearing documents · 5 profile tags + 2 trigger tags · 6 checklists · 10
+templates-and-instruments · 2 ADRs · 6 accepted numeric policies, 0 pending.
+**Enforcement distribution:** 24 auto · 30 partial · 169 review-only · 21 judgment · 19 process.
+**Technology decisions made by the playbook itself:** exactly one — the self-CI platform
+([ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md)). Everything else is
+deliberately deferred to project ADRs.
+
+### Pilot walkthrough findings (Phase 6 desk exercise)
+
+Representative task traced end-to-end ("paginated endpoint + new table, `web + api-service +
+uses-database` profile"): entry → profile → routing → ~12 of 47 documents loaded → correct rules
+and gates fired → DoD resolved. Genuine defects found and fixed during Phase 6, none silently:
+
+| Finding | Class | Resolution |
+|---|---|---|
+| No defined behavior for undeclared profile | Missing standard | AGENT-018 |
+| Nothing forbade inventing standards / assuming decisions | Missing standard | AGENT-019 |
+| Nothing forbade deleting tests to pass CI | Missing standard | AGENT-020 |
+| Nothing forbade self-serving playbook edits | Missing standard | AGENT-021 |
+| Validator reported violations but exited 0 | Tooling defect | Blocking exit codes |
+| Enforcement-matrix drift unchecked | Tooling defect | CI diff gate |
+| Tech-neutrality scan flagged ADRs | Tooling defect | `decisions/` exempted — ADRs are where technology belongs |
+| Migration route omitted CI-009 | Navigation | Fixed in final context map |
+| Trigger tags depend on correct PII classification (SEC-014 judgment) | Known limitation | Recorded below, not papered over |
+
+### What the playbook guarantees — and what it cannot
+
+**Guarantees:** every requirement is identified, owned, and classified by how it is actually
+enforced; agents and humans can determine applicable standards mechanically from profile + task;
+deviations and exceptions are recorded and auditable, never silent; structural defects in the
+playbook itself fail CI; versions are pinned and breaking changes are explicit.
+
+**Cannot guarantee:** that software following it is secure, bug-free, scalable, or incident-free —
+no document can. Review-classed and judgment-classed rules (190 of 263) are only as good as the
+humans exercising them; `partial` checks depend on per-project tooling that projects must actually
+wire; trigger-based gates depend on honest classification of what a change touches; and until a
+person holds the Playbook Owner role, no MUST waiver can be approved at all. The playbook reduces
+risk by construction and makes violations visible — it does not abolish engineering judgment.
+
+### Known limitations
+
+Playbook Owner is a role without a person (waivers blocked — deliberate). Mobile is a stub until
+its ADR trigger. `partial` checks (30) are a per-project tooling backlog. Action SHA-pinning
+pending first external contributor (ADR-0002 backlog). Branch protection on this repo activates
+with the second contributor (ADR-0002).
+
+### Operating model from here
+
+Quarterly review per change-process §4 (waiver expiry, deprecated-rule retirement, unused rules,
+tooling gaps) · annual full-playbook audit against real project experience · all changes via RFC
+· every release tag annotated with rule deltas · the first real adopting project's feedback is
+the highest-value input the playbook can now receive.
 
 ## Phase completion checklist (applies to every phase)
 

@@ -275,8 +275,12 @@
 | AGENT-015 | ai-agent-standards.md | MAY | all | Process step (owner / quarterly review) | process | no | follows | yes | no | 5 |
 | AGENT-016 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 5 |
 | AGENT-017 | ai-agent-standards.md | MUST | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 5 |
+| AGENT-018 | ai-agent-standards.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 6 |
+| AGENT-019 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 6 |
+| AGENT-020 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 6 |
+| AGENT-021 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 6 |
 
-**Totals:** 259 rules - auto: 24 · judgment: 21 · partial: 30 · process: 18 · review-only: 166
+**Totals:** 263 rules - auto: 24 · judgment: 21 · partial: 30 · process: 19 · review-only: 169
 
 ## Tooling gaps (tracked for Phase 5/6)
 

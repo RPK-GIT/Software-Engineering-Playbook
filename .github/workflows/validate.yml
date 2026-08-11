@@ -1,0 +1,45 @@
+# Playbook self-CI (ADR-0002). Security model:
+# - permissions: contents:read only - validation needs nothing else; an untrusted PR
+#   never obtains write privileges (runs via `pull_request`, never `pull_request_target`).
+# - No secrets are used or available to these jobs.
+# - No third-party actions beyond actions/checkout; Python is runner-preinstalled.
+#   Hardening backlog (tracked in ADR-0002): pin actions by commit SHA once the repo
+#   has external contributors.
+name: playbook-validate
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Governance invariants (V1-V15)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run validator (blocking checks)
+        run: python3 tools/validate.py
+
+      - name: Enforcement matrix in sync with rules
+        run: |
+          python3 tools/gen_matrix.py
+          git diff --exit-code governance/enforcement-matrix.md \
+            || { echo "::error::enforcement-matrix.md is stale - run tools/gen_matrix.py and commit (RULE-006)"; exit 1; }
+
+  release-validate:
+    name: Release invariants
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate release (tag/version consistency + all invariants)
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python3 tools/validate.py

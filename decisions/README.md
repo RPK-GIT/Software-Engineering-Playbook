@@ -29,3 +29,4 @@
 | ADR | Title | Status | Date |
 |---|---|---|---|
 | [0001](0001-record-architecture-decisions.md) | Record architecture decisions | Accepted | 2026-08-11 |
+| [0002](0002-github-actions-for-playbook-self-ci.md) | GitHub Actions for playbook self-CI | Accepted | 2026-08-11 |

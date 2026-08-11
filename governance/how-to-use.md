@@ -54,7 +54,49 @@ No rule covers the situation? Then, in order:
 Silence in the playbook is never a license for the weakest option — decisions taken in the gap must
 be recorded so the gap closes.
 
-## 5. Feedback loop
+## 5. The minimum adoption contract
+
+The complete, ordered list of what adopting actually requires. The playbook stays centrally
+maintained — **projects copy templates, never standards**; standards are inherited by reference
+through the pin.
+
+1. **Pin** a playbook version (git tag) — §1.1.
+2. **Declare** the profile in `CLAUDE.md` from [templates/claude-md.md](../templates/claude-md.md) — §1.2.
+3. **Resolve** applicable standards mechanically: `all` + profile tags + triggers
+   ([agents/context-map.md](../agents/context-map.md) routes; the
+   [enforcement matrix](enforcement-matrix.md) says what's automated vs human).
+4. **Copy** the required templates: README, PR template, `CLAUDE.md` (REPO-001); ADR/threat-model/
+   runbook/postmortem templates are used as their triggers fire.
+5. **Configure validation**: wire the `ci`-tagged checks for the profile into the project's CI
+   (CI-002); tooling choices are project ADRs.
+6. **Run** [checklists/new-repository.md](../checklists/new-repository.md) to completion.
+7. **Initialize** the project `decisions/` directory and record the stack-selection ADR(s) (DOC-003).
+8. **Adopt the Definition of Done** — [checklists/definition-of-done.md](../checklists/definition-of-done.md)
+   filtered by profile is the project's DoD; extend stricter if needed (RULE-009), never looser.
+9. **Integrate playbook-compliance checks into CI** as they become available per the matrix's
+   `partial` backlog — honestly classified, never faked.
+
+## 6. Technology annexes
+
+Generic standards are technology-neutral by design; **annexes** carry stack-specific guidance
+when a technology family is adopted for reuse. The mechanism (no annexes exist yet — none is
+created until an ADR adopts a stack for more than one project):
+
+- Location: `standards/annexes/<technology>.md`, clearly marked technology-specific, with an
+  applicability note naming the adopting ADR.
+- Derivation: annexes operationalize generic rules for the stack and may only **add strictness**
+  (RULE-009); an annex conflicting with a generic standard is defective by definition.
+- Lifecycle: created via the change process after the adopting ADR; retired when the stack is.
+
+## 7. Deprecated rules
+
+Per the [rule lifecycle](../standards/_rule-format.md) §5: a Deprecated rule **remains binding**
+until Retired, with its replacement named in the rule's Status field. Projects encountering a
+deprecated rule follow it (or its replacement, which satisfies it) and treat the deprecation
+window as migration time — the tag annotations name every deprecation so upgrades surface them
+(§3).
+
+## 8. Feedback loop
 
 Rules that prove wrong, unclear, or costly in practice are challenged through the change process —
 not ignored. A project that finds itself repeatedly requesting the same waiver has found a defect

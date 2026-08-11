@@ -1,4 +1,15 @@
-import re, os, glob
+"""Playbook self-CI validator (official; selected via ADR-0002).
+
+BLOCKING (exit 1): V1-V5, V7-V9, V11-V15 - deterministic governance invariants
+backed by mandatory rules. INFORMATIONAL (printed only): V6 keyword heuristic
+(RULE-004 is review-enforced; use-vs-mention needs a human) and V10 policy
+inventory. This classification derives from each rule's enforcement semantics -
+review-only rules are never faked as automated gates.
+
+Release mode: set RELEASE_TAG=vX.Y.Z to additionally verify tag/version
+consistency (V11 strict).
+"""
+import re, os, glob, sys
 
 md_files = [f.replace(os.sep, '/') for f in glob.glob('**/*.md', recursive=True)]
 md_files = [f for f in md_files if not f.startswith('.claude')]
@@ -121,10 +132,12 @@ for m in re.finditer(r'`([^`]+\.md)`[^|]*\|[^|]*\|[^|]*\|[^|]*✅', idx):
     if not os.path.exists(m.group(1)):
         issues.append(f"V9 index marks existing but file missing: {m.group(1)}")
 
-# --- Technology-agnosticism (all docs except superseded design history) ---
+# --- Technology-agnosticism: generic documents only. decisions/ is EXEMPT by design -
+#     ADRs are exactly where technology choices live; the invariant protects standards,
+#     governance, agents, checklists, and templates from technology leakage. ---
 tech = re.compile(r'\b(React|Angular|Vue|Django|Rails|Spring|Flyway|PostgreSQL|MySQL|MongoDB|Kubernetes|Terraform|AWS|Azure|GCP|Node\.js|TypeScript|Python|Java\b|Kotlin|Swift|Docker|Jenkins|GitHub Actions)\b')
 for f in md_files:
-    if f == 'PLAYBOOK-DESIGN.md':
+    if f == 'PLAYBOOK-DESIGN.md' or f.startswith('decisions/') or f.startswith('standards/annexes/'):
         continue
     for m in tech.finditer(open(f, encoding='utf-8').read()):
         issues.append(f"TECH {f}: '{m.group()}'")
@@ -141,10 +154,55 @@ for p in pol_accepted:
 for p in pol_pending:
     print(f"  PENDING  {p}")
 
+# --- V11: version consistency ---
+tmpl = open('templates/claude-md.md', encoding='utf-8').read()
+vm = re.search(r'version: (v\d+\.\d+\.\d+)', tmpl)
+if not vm:
+    issues.append("V11 templates/claude-md.md: no parseable pinned version (vX.Y.Z)")
+else:
+    release_tag = os.environ.get('RELEASE_TAG', '')
+    if release_tag and release_tag != vm.group(1):
+        issues.append(f"V11 release tag {release_tag} != template pinned version {vm.group(1)}")
+
+# --- V12: mobile trigger consistency (stub carries no rules; MOB rules exist nowhere while stub) ---
+mobile = open('standards/mobile.md', encoding='utf-8').read()
+if 'Status:** Stub' in mobile or 'Status: Stub' in mobile:
+    mob_rules = [rid for rid in ids if rid.startswith('MOB-')]
+    if mob_rules:
+        issues.append(f"V12 mobile.md is a stub but MOB rules exist: {mob_rules}")
+    if re.search(r'^### MOB-\d{3}:', mobile, re.M):
+        issues.append("V12 mobile.md stub contains canonical rule blocks")
+
+# --- V13: context-map coverage (every rule-bearing document is routed) ---
+cmap = open('agents/context-map.md', encoding='utf-8').read()
+rule_docs = sorted({ids[rid] for rid in ids})
+for doc in rule_docs:
+    if os.path.basename(doc) not in cmap:
+        issues.append(f"V13 agents/context-map.md does not route to rule-bearing document {doc}")
+
+# --- V14: prefix registry consistency (every registered prefix's owning document exists) ---
+fmt = open('standards/_rule-format.md', encoding='utf-8').read()
+for m in re.finditer(r'\| `([A-Z]{2,6})` \| ([a-z_./-]+\.md)', fmt):
+    if not os.path.exists(m.group(2)):
+        issues.append(f"V14 prefix {m.group(1)} owning document missing: {m.group(2)}")
+
+# --- V15: policy block well-formedness (a proposed policy without the approval marker is a
+#          silent threshold - forbidden by the numeric-policy decisions) ---
+for f in md_files:
+    text = open(f, encoding='utf-8').read()
+    for m in re.finditer(r'\*\*PROPOSED POLICY — ([^*]+)\*\*(.{0,1500})', text, re.S):
+        if 'REQUIRES PLAYBOOK OWNER APPROVAL' not in m.group(2):
+            issues.append(f"V15 {f}: proposed policy '{m.group(1)}' lacks REQUIRES PLAYBOOK OWNER APPROVAL status")
+    for m in re.finditer(r'\*\*ACCEPTED (?:POLICY|CONVENTION) — ([^*]+)\*\*', text):
+        if not re.search(r'\d{4}-\d{2}-\d{2}', m.group(1)):
+            issues.append(f"V15 {f}: accepted policy '{m.group(1)}' lacks an acceptance date")
+
 print("\n" + "=" * 50)
 if issues:
-    print(f"ISSUES ({len(issues)}):")
+    print(f"BLOCKING ISSUES ({len(issues)}):")
     print("\n".join(issues))
+    print(f"Files checked: {len(md_files)}")
+    sys.exit(1)
 else:
-    print("ALL AUTOMATED CHECKS PASS: V1-V5, V7, V8, V9 + tech-agnosticism.")
-print(f"Files checked: {len(md_files)}")
+    print("ALL BLOCKING CHECKS PASS: V1-V5, V7-V9, V11-V15 + tech-agnosticism.")
+    print(f"Files checked: {len(md_files)}")

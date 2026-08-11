@@ -90,6 +90,7 @@ PHASE4 = {'WEB', 'MOB'}
 PHASE4_IDS = {'SEC-028'}
 PHASE5_PREFIXES = {'CI', 'INFRA', 'OPS'}
 PHASE5_IDS = {'AGENT-015', 'AGENT-016', 'AGENT-017', 'WEB-029'}
+PHASE6_IDS = {'AGENT-018', 'AGENT-019', 'AGENT-020', 'AGENT-021'}
 
 rules = []
 heading = re.compile(r'^### ([A-Z]{2,6}-[0-9]{3}): (.+)$', re.M)
@@ -119,7 +120,9 @@ def row(rid, doc, lvl, enf, app):
         cls, ci, ai, human = 'process', 'no', 'follows', 'yes'
         mech = MECH.get(rid, 'Process step (owner / quarterly review)')
     blocking = 'yes' if lvl in ('MUST', 'MUST NOT') else 'no'
-    if PHASE1.match(rid):
+    if rid in PHASE6_IDS:
+        phase = '6'
+    elif PHASE1.match(rid):
         phase = '1'
     elif prefix in PHASE5_PREFIXES or rid in PHASE5_IDS:
         phase = '5'
