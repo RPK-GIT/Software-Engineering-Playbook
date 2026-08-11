@@ -43,6 +43,9 @@ checklists, templates, the enforcement matrix, and the agent context map.
 **Migration** — A versioned, ordered change to persistent data structure or stored data, tracked
 in the repository (DB-001).
 
+**Performance budget** — A per-project, CI-verified limit on user-experienced performance
+characteristics (load metrics, payload sizes) that a change may not exceed (WEB-010).
+
 **PII (Personally Identifiable Information)** — Data that identifies, or can reasonably be
 combined to identify, a natural person: names, contact details, government identifiers, precise
 location, biometric or health data, and identifiers linkable to a person.

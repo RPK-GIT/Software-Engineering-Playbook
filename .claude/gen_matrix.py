@@ -23,13 +23,21 @@ PARTIAL = {
     'SEC-019': 'Dependency vulnerability scanner in CI - tooling selection per project (ADR)',
     'SEC-020': 'Secret scanner in CI - tooling selection per project (ADR)',
     'SEC-021': 'SAST in CI where the ecosystem has viable tooling',
+    'SEC-028': 'Scanner severity gate (CVSS v3.1 >= 7.0; accepted 2026-08-11); waiver path is human-only',
     'API-001': 'Contract presence/lint check; contract *quality* needs review',
     'DB-001': 'Migration-tool presence/ordering check; migration *content* needs review',
+    'WEB-003': 'Accessibility lint (label association is deterministic); coverage depends on tooling',
+    'WEB-006': 'Contrast checks in accessibility tooling; dynamic states need review',
+    'WEB-009': 'Accessibility check step present in CI - tooling selection per project (ADR)',
+    'WEB-010': 'Budget verification in CI - measurement tooling per project (ADR); values pending approval',
+    'WEB-017': 'Response-header validation in CI/tests; per-response-class exceptions need review',
+    'WEB-024': 'SRI/self-host lint on script tags; dynamically injected scripts need review',
 }
 # Rules where the human check is expert judgment (not an itemizable checklist)
 JUDGMENT = {'ARCH-001','ARCH-002','ARCH-003','ARCH-008','ARCH-009',
             'CODE-004','CODE-009','TEST-011','GIT-011',
-            'SEC-004','DB-008','OBS-010','OBS-011','API-011'}
+            'SEC-004','DB-008','OBS-010','OBS-011','API-011',
+            'WEB-008','WEB-016','WEB-018'}
 # Mechanism text overrides (default derived from enforcement + prefix)
 MECH = {
     'GIT-002': 'Platform branch protection (PR-only)',
@@ -64,9 +72,13 @@ GATE_BY_PREFIX = {
     'API': 'Code review; architecture review for cross-component contracts',
     'DB': 'Code review; security review for classified-data migrations',
     'OBS': 'Code review',
+    'WEB': 'Code review (web items in DoD); security review where SEC-026 triggers fire',
+    'MOB': 'n/a - stub, no rules',
 }
 PHASE1 = re.compile(r'^(RULE-\d+|AGENT-0(0\d|1[012]))$')
 PHASE3_PREFIXES = {'SEC', 'API', 'DB', 'OBS'}
+PHASE4 = {'WEB', 'MOB'}
+PHASE4_IDS = {'SEC-028'}
 
 rules = []
 heading = re.compile(r'^### ([A-Z]{2,6}-[0-9]{3}): (.+)$', re.M)
@@ -98,6 +110,8 @@ def row(rid, doc, lvl, enf, app):
     blocking = 'yes' if lvl in ('MUST', 'MUST NOT') else 'no'
     if PHASE1.match(rid):
         phase = '1'
+    elif prefix in PHASE4 or rid in PHASE4_IDS:
+        phase = '4'
     elif prefix in PHASE3_PREFIXES:
         phase = '3'
     else:

@@ -251,6 +251,9 @@ enforceability varies per rule and is recorded in the enforcement matrix. Scope 
 | Backups & restore | infrastructure.md (Phase 5) | database.md (deliberately defines no backup rules) |
 | Vulnerability & dependency scanning | security.md (SEC-019…021) | ci-cd.md (pipeline *runs* the scans) |
 | Rate limiting & abuse controls | security.md (SEC-023) | api.md |
+| Browser security headers & CSP | web.md (WEB-017/018) | security.md |
+| Client-side secrets & token storage | web.md (WEB-022/023 — the browser boundary) | security.md (SEC-009 server side, SEC-013 lifetimes) |
+| Injection defense — sanctioned rich-text path | web.md (WEB-021) | security.md (SEC-006 owns the general rule) |
 | Releases & versioning | ci-cd.md | repository.md |
 | Dependency selection | coding.md | — |
 | Dependency vulnerabilities | security.md | ci-cd.md (pipeline *runs* the scan; rule lives in SEC) |

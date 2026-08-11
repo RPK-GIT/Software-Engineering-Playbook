@@ -153,6 +153,7 @@
 | SEC-018 | security.md | MUST NOT | uses-database | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
 | SEC-019 | security.md | MUST | all | Dependency vulnerability scanner in CI - tooling selection per project (ADR) | partial | partial | yes | spot-check | yes | 3 |
 | SEC-020 | security.md | MUST | all | Secret scanner in CI - tooling selection per project (ADR) | partial | partial | yes | spot-check | yes | 3 |
+| SEC-028 | security.md | MUST NOT | all | Scanner severity gate (CVSS v3.1 >= 7.0; accepted 2026-08-11); waiver path is human-only | partial | partial | yes | spot-check | yes | 4 |
 | SEC-021 | security.md | SHOULD | all | SAST in CI where the ecosystem has viable tooling | partial | partial | yes | spot-check | no | 3 |
 | SEC-022 | security.md | MUST | web, mobile, api-service | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
 | SEC-023 | security.md | MUST | web, api-service, public-api | Security review (SEC-026 triggers) / code review | review-only | no | yes | yes | yes | 3 |
@@ -175,6 +176,34 @@
 | TEST-013 | testing.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | TEST-014 | testing.md | MUST | all | Coverage measurement + report step in CI | auto | yes | yes | no | yes | 2 |
 | TEST-015 | testing.md | SHOULD | all | Diff-coverage report/warning (accepted 2026-08-11); exceptions per AGENT-009 | partial | partial | yes | spot-check | no | 2 |
+| WEB-001 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-002 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-003 | web.md | MUST | web | Accessibility lint (label association is deterministic); coverage depends on tooling | partial | partial | yes | spot-check | yes | 4 |
+| WEB-004 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-005 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-006 | web.md | MUST | web | Contrast checks in accessibility tooling; dynamic states need review | partial | partial | yes | spot-check | yes | 4 |
+| WEB-007 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-008 | web.md | SHOULD | web | Code review (web items in DoD); security review where SEC-026 triggers fire | judgment | no | assists | yes | no | 4 |
+| WEB-009 | web.md | MUST | web | Accessibility check step present in CI - tooling selection per project (ADR) | partial | partial | yes | spot-check | yes | 4 |
+| WEB-010 | web.md | MUST | web | Budget verification in CI - measurement tooling per project (ADR); values pending approval | partial | partial | yes | spot-check | yes | 4 |
+| WEB-011 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-012 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-013 | web.md | SHOULD | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | no | 4 |
+| WEB-014 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-015 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-016 | web.md | SHOULD | web | Code review (web items in DoD); security review where SEC-026 triggers fire | judgment | no | assists | yes | no | 4 |
+| WEB-017 | web.md | MUST | web | Response-header validation in CI/tests; per-response-class exceptions need review | partial | partial | yes | spot-check | yes | 4 |
+| WEB-018 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | judgment | no | assists | yes | yes | 4 |
+| WEB-019 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-020 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-021 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-022 | web.md | MUST NOT | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-023 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-024 | web.md | MUST | web | SRI/self-host lint on script tags; dynamically injected scripts need review | partial | partial | yes | spot-check | yes | 4 |
+| WEB-025 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-026 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-027 | web.md | MUST | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | yes | 4 |
+| WEB-028 | web.md | SHOULD | web | Code review (web items in DoD); security review where SEC-026 triggers fire | review-only | no | yes | yes | no | 4 |
 | AGENT-001 | ai-agent-standards.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 1 |
 | AGENT-002 | ai-agent-standards.md | MUST | all | Process step (owner / quarterly review) | process | no | follows | yes | yes | 1 |
 | AGENT-003 | ai-agent-standards.md | MUST | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 1 |
@@ -190,7 +219,7 @@
 | AGENT-013 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 2 |
 | AGENT-014 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 2 |
 
-**Totals:** 173 rules - auto: 23 · judgment: 14 · partial: 18 · process: 7 · review-only: 111
+**Totals:** 202 rules - auto: 23 · judgment: 17 · partial: 25 · process: 7 · review-only: 130
 
 ## Tooling gaps (tracked for Phase 5/6)
 

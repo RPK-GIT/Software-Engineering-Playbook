@@ -49,8 +49,8 @@
 | `standards/api.md` (API) | 3 | Profile: api-service | ✅ | Contract-first, versioning, standard error contract, pagination, idempotency declaration (13 rules) |
 | `standards/database.md` (DB) | 3 | Profile: uses-database | ✅ | Migration discipline, keys/constraints, isolation, indexes, retention mechanism (12 rules) |
 | `standards/observability.md` (OBS) | 3 | Yes | ✅ | Structured logging, levels, correlation, telemetry content limits, health, metrics, alerts (11 rules) |
-| `standards/web.md` (WEB) | 4 | Profile: web | 📋 | Accessibility, performance budgets, assets, browser policy |
-| `standards/mobile.md` (MOB) | 4 | Profile: mobile | 🧊 | Mobile-specific rules; authored when first mobile project is real |
+| `standards/web.md` (WEB) | 4 | Profile: web | ✅ | Accessibility (WCAG 2.2), performance budgets, browser policy, headers/CSP, client security, i18n (28 rules) |
+| `standards/mobile.md` (MOB) | 4 | Profile: mobile | 🧊 | Stub in place: activation trigger, reserved scope, derivation contract; expanded when a mobile-project ADR is accepted |
 | `standards/ci-cd.md` (CI) | 5 | Yes | 📋 | Pipeline gates, artifact versioning, release/rollback |
 | `standards/infrastructure.md` (INFRA) | 5 | Yes | 📋 | IaC, environments, runtime secrets, network baseline, backups |
 | `standards/operations.md` (OPS) | 5 | Yes | 📋 | Incident severity, on-call, runbook/postmortem duties |
@@ -96,7 +96,7 @@
 ---
 
 **Totals:** 46 active documents (6 root + 4 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
-**Phase 3 complete (2026-08-11) — v1.0.0 "Production Engineering Foundation":** 36 documents exist
-(34 ✅ + 2 🚧 seeds); 173 normative rules across 13 rule-bearing documents. Backend/API/service
-development may begin; web and mobile need Phase 4. Next up: Phase 4 — see
+**Phase 4 complete (2026-08-11):** 38 documents exist (35 ✅ + 2 🚧 seeds + 1 🧊 stub); 202
+normative rules across 14 rule-bearing documents. Backend/API/service **and web** development may
+begin; mobile awaits its activation trigger. Next up: Phase 5 — CI/CD & Operations — see
 [PLAYBOOK-ROADMAP.md](PLAYBOOK-ROADMAP.md).

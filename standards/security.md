@@ -193,6 +193,14 @@ requirement silently is AGENT-003/005.
 - **Rationale:** This is the mechanical enforcement arm of REPO-002 — human vigilance against accidental commits fails eventually; scanners don't get tired ([P-9](../principles/engineering-principles.md)).
 - **Exceptions:** waiver-only
 
+### SEC-028: A production-bound change MUST NOT ship with a known dependency vulnerability rated High or Critical by an authoritative vulnerability source, absent an approved waiver.
+
+- **Level:** MUST NOT
+- **Enforcement:** ci
+- **Applies to:** all
+- **Rationale:** Accepted policy (2026-08-11): known-exploitable severity is the blocking line the SEC-019 scan enforces. Severity is the gate, not the whole risk assessment — the waiver decision may weigh exploitability, reachability, exposure, affected code path, deployment context, and compensating controls. Exceptions exist only through [governance/waivers.md](../governance/waivers.md) with human approval; an agent may draft the exception (AGENT-008) but never approve or silently apply one (AGENT-007) ([P-5](../principles/engineering-principles.md)).
+- **Exceptions:** waiver-only
+
 ### SEC-021: CI SHOULD include static application security testing appropriate to the stack.
 
 - **Level:** SHOULD
@@ -268,15 +276,11 @@ requirement silently is AGENT-003/005.
 **Threat model (SEC-027)** — a *new* system or service; or a change matching triggers 1, 3, 5, or 6
 above whose existing threat model does not already cover it.
 
-## 3. Proposed policy values (pending approval — not yet binding)
+## 3. Accepted policy values
 
-**PROPOSED POLICY — vulnerability blocking severity (would extend SEC-019 with a blocking gate)**
-- **Value:** findings of severity High or Critical (CVSS ≥ 7.0) block merge; Medium and below are tracked work items
-- **Reason:** High/Critical is the conventional exploitability line; blocking everything makes the gate unlivable and gets it disabled
-- **Risk of too low (blocking Medium+):** constant build breakage on unexploitable findings; teams route around the gate
-- **Risk of too high (blocking Critical only):** known-exploitable High findings ship routinely
-- **Scope:** all profiles; waiver-only exceptions with compensating controls (e.g., no exploitable path, upstream fix pending)
-- **Status:** REQUIRES PLAYBOOK OWNER APPROVAL
+**ACCEPTED POLICY — vulnerability blocking severity (2026-08-11, Playbook Owner; enforced by SEC-028)**
+- **Value:** vulnerabilities rated High or Critical by an authoritative source block production-bound changes. Where CVSS is the rating source, the baseline is **CVSS v3.1**, and **CVSS ≥ 7.0** counts as High-or-above; findings below the line are tracked work items.
+- **Terms of acceptance:** severity is not the only risk factor — security review may additionally weigh exploitability, reachability, exposure, affected code path, deployment context, and compensating controls when deciding a waiver. Every exception uses the existing waiver mechanism with human approval; AI agents may identify and document a potential exception (AGENT-008) but never approve or silently apply one (AGENT-007).
 
 ## Interaction with other standards
 

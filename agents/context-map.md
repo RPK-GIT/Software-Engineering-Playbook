@@ -39,8 +39,8 @@ stable from day one; until they exist, the engineering principles plus project A
 | An API contract | [standards/api.md](../standards/api.md) (+ trigger `public-api` rules) | ✅ |
 | Schema, migrations, persisted data | [standards/database.md](../standards/database.md) | ✅ |
 | Auth, secrets, PII, uploads, external surface | [security.md](../standards/security.md) §2 triggers → [checklists/security-review.md](../checklists/security-review.md); threat model per SEC-027 → [templates/threat-model.md](../templates/threat-model.md) | ✅ |
-| Browser UI | `standards/web.md` | Phase 4 |
-| Mobile UI | `standards/mobile.md` | Phase 4 (stub until triggered) |
+| Browser UI | [standards/web.md](../standards/web.md) | ✅ |
+| Mobile UI | [standards/mobile.md](../standards/mobile.md) — stub; `mobile` profile may not be declared until its activation trigger fires | 🧊 stub |
 | Pipelines, releases, environments | `standards/ci-cd.md`, `standards/infrastructure.md` | Phase 5 |
 | Incidents, runbooks, on-call artifacts | `standards/operations.md`, `checklists/incident-response.md` | Phase 5 |
 | Repository creation or layout | [standards/repository.md](../standards/repository.md), [checklists/new-repository.md](../checklists/new-repository.md) | ✅ |

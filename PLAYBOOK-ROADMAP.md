@@ -4,7 +4,10 @@
 > [PLAYBOOK-ARCHITECTURE.md](PLAYBOOK-ARCHITECTURE.md); the full inventory with per-document status is
 > [DOCUMENT-INDEX.md](DOCUMENT-INDEX.md).
 >
-> **Current phase: Phase 3 COMPLETE (2026-08-11) — v1.0.0 "Production Engineering Foundation". Next: Phase 4 — Web & Mobile.**
+> **Current phase: Phase 4 COMPLETE (2026-08-11). Next: Phase 5 — CI/CD & Operations.**
+> Phase 4 exit criteria verified: web features can be built and reviewed against explicit platform
+> rules (WEB-001…028 + DoD web section); mobile scope is bounded by the trigger-gated stub
+> ([standards/mobile.md](standards/mobile.md)) so nobody writes speculative rules.
 > Phase 3 exit criteria verified: security-review gate defined with trigger list and owner role
 > (SEC-026, Playbook Owner / Principal Architect); every Phase 3 MUST in the
 > [enforcement matrix](governance/enforcement-matrix.md); all checklists resolve to live rule IDs.
@@ -19,8 +22,8 @@ technology-specific standards are complete. Consequences, by profile:
 | Project profile | May development begin at v1.0.0? |
 |---|---|
 | `api-service`, `library`, backend services | **Yes** — applicable Phase 1–3 standards suffice |
-| `web` | Only alongside Phase 4 — applicable Web standards must additionally be satisfied |
-| `mobile` | Only after the mobile stub is expanded (Phase 4, trigger-gated) |
+| `web` | **Yes, as of Phase 4** — [standards/web.md](standards/web.md) applies alongside the core |
+| `mobile` | Only after the stub is expanded — trigger: an accepted ADR for a mobile project ([standards/mobile.md](standards/mobile.md)) |
 | Any profile needing infra/platform standards | The applicable Phase 5 standards bind when their applicability requires them |
 
 ## Sequencing logic

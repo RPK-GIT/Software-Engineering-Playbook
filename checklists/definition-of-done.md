@@ -52,6 +52,17 @@
 - [ ] New code emits structured logs at correct levels, carries the correlation ID, leaks nothing sensitive — OBS-001, OBS-002, OBS-004, OBS-005
 - [ ] Changed-line coverage meets the expectation or the deviation is justified — TEST-015
 
+## When the change touches browser-delivered UI (`web` profile, Phase 4)
+
+- [ ] Keyboard-operable; focus managed on dynamic changes — WEB-001, WEB-005
+- [ ] Semantic markup; inputs labeled; errors announced — WEB-002, WEB-003, WEB-004
+- [ ] Contrast and reflow criteria met; automated accessibility checks green — WEB-006, WEB-007, WEB-009
+- [ ] Performance budget respected; images and caching handled — WEB-010, WEB-011, WEB-012
+- [ ] Baseline headers, CSP, cookie attributes, CSRF protection intact — WEB-017…020
+- [ ] No client-embedded secrets; tokens script-protected; external scripts integrity-pinned — WEB-022, WEB-023, WEB-024
+- [ ] User HTML sanitized; CORS origins enumerated — WEB-021, WEB-025
+- [ ] i18n rules applied where requirements include localization — WEB-026, WEB-027
+
 ## Agents (and honest humans)
 
 - [ ] Deviations from recommended rules recorded under `## Standards deviations` — AGENT-009
