@@ -166,12 +166,13 @@ playbook's own CI rejects structural defects; quarterly review cadence active pe
 
 ---
 
-## Final status (post-Phase 6, v4.0.0)
+## Final status (post-Phase 6; current release v4.1.0)
 
-**Inventory:** 47 active documents (46 complete + 1 trigger-gated mobile stub) · 263 normative
+**Inventory:** 48 active documents (47 complete + 1 trigger-gated mobile stub) · 265 normative
 rules in 17 rule-bearing documents · 5 profile tags + 2 trigger tags · 6 checklists · 10
-templates-and-instruments · 2 ADRs · 6 accepted numeric policies, 0 pending.
-**Enforcement distribution:** 24 auto · 30 partial · 169 review-only · 21 judgment · 19 process.
+templates-and-instruments · 2 ADRs · 6 accepted numeric policies, 0 pending · 1 accepted RFC
+(governance/rfcs/0001: APP-013/014, v4.1.0).
+**Enforcement distribution:** 24 auto · 30 partial · 169 review-only · 23 judgment · 19 process.
 **Technology decisions made by the playbook itself:** exactly one — the self-CI platform
 ([ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md)). Everything else is
 deliberately deferred to project ADRs.
@@ -202,7 +203,7 @@ deviations and exceptions are recorded and auditable, never silent; structural d
 playbook itself fail CI; versions are pinned and breaking changes are explicit.
 
 **Cannot guarantee:** that software following it is secure, bug-free, scalable, or incident-free —
-no document can. Review-classed and judgment-classed rules (190 of 263) are only as good as the
+no document can. Review-classed and judgment-classed rules (192 of 265) are only as good as the
 humans exercising them; `partial` checks depend on per-project tooling that projects must actually
 wire; trigger-based gates depend on honest classification of what a change touches; and until a
 person holds the Playbook Owner role, no MUST waiver can be approved at all. The playbook reduces

@@ -54,6 +54,8 @@
 | APP-010 | application.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | APP-011 | application.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
 | APP-012 | application.md | MUST | all | Code review | review-only | no | yes | yes | yes | 2 |
+| APP-013 | application.md | SHOULD | all | Code review | judgment | no | assists | yes | no | 2 |
+| APP-014 | application.md | SHOULD | all | Code review | judgment | no | assists | yes | no | 2 |
 | ARCH-001 | architecture.md | MUST | all | Architecture review (structural changes, in code review) | judgment | no | assists | yes | yes | 2 |
 | ARCH-002 | architecture.md | MUST | all | Architecture review (structural changes, in code review) | judgment | no | assists | yes | yes | 2 |
 | ARCH-003 | architecture.md | MUST NOT | all | Architecture review (structural changes, in code review) | judgment | no | assists | yes | yes | 2 |
@@ -280,7 +282,7 @@
 | AGENT-020 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 6 |
 | AGENT-021 | ai-agent-standards.md | MUST NOT | all | Review of agent output (PR review) | review-only | no | yes | yes | yes | 6 |
 
-**Totals:** 263 rules - auto: 24 · judgment: 21 · partial: 30 · process: 19 · review-only: 169
+**Totals:** 265 rules - auto: 24 · judgment: 23 · partial: 30 · process: 19 · review-only: 169
 
 ## Tooling gaps (tracked for Phase 5/6)
 

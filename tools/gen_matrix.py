@@ -40,6 +40,7 @@ PARTIAL = {
 }
 # Rules where the human check is expert judgment (not an itemizable checklist)
 JUDGMENT = {'ARCH-001','ARCH-002','ARCH-003','ARCH-008','ARCH-009',
+            'APP-013','APP-014',
             'CODE-004','CODE-009','TEST-011','GIT-011',
             'SEC-004','DB-008','OBS-010','OBS-011','API-011',
             'WEB-008','WEB-016','WEB-018',

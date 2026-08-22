@@ -3,8 +3,9 @@
 > **Class:** Standard · **Rule prefix:** `APP` · **Status:** Active
 > **Purpose:** how application behavior is structured at runtime — the cross-platform rules every
 > deployable needs regardless of being web, mobile-backend, or service.
-> **Owns:** configuration handling, failure behavior (timeouts, retries, degradation), idempotency,
-> transactions/state integrity, concurrency discipline, feature flags.
+> **Owns:** configuration handling, failure behavior (timeouts, retries, degradation, circuit
+> breaking, fault containment), idempotency, transactions/state integrity, concurrency discipline,
+> feature flags.
 > **Does not own:** structural boundaries ([architecture.md](architecture.md)); code-level error
 > style ([coding.md](coding.md)); authn/z and input validation at trust boundaries
 > (`standards/security.md`, Phase 3); logging/metrics duties (`standards/observability.md`,
@@ -113,9 +114,27 @@ databases, third-party APIs, queues, other services. These rules operationalize
 - **Rationale:** Flags are temporary by design; unowned flags become permanent config nobody dares touch, doubling the state space of the application ([P-11](../principles/engineering-principles.md)).
 - **Exceptions:** justified-deviation for permanent operational kill-switches, which are declared as such
 
+### APP-013: Calls to an external dependency that is persistently failing SHOULD be suspended automatically until a controlled probe succeeds (circuit breaking).
+
+- **Level:** SHOULD
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** Timeouts (APP-004) and bounded retries (APP-005) limit the cost of each attempt but still send every new request into a dependency that is down; suspending calls fails fast, sheds load the dependency cannot serve, and gives it room to recover ([P-6](../principles/engineering-principles.md)).
+- **Exceptions:** justified-deviation — e.g., the dependency's declared failure mode (APP-003) is fail-fast for the whole application, or call volume is too low for persistent failure to compound
+
+### APP-014: A failure in one feature SHOULD be contained so that features not depending on it remain operational (fault containment).
+
+- **Level:** SHOULD
+- **Enforcement:** review
+- **Applies to:** all
+- **Rationale:** A single deployable hosts many features; without containment — feature-scoped error handling, isolated resource pools, kill switches per APP-012 — one feature's defect becomes a whole-application outage ([P-6](../principles/engineering-principles.md)).
+- **Exceptions:** justified-deviation for genuinely interdependent features, recorded with the dependency stated
+
 ## Interaction with other standards
 
-The isolation points where these behaviors live are placed by ARCH-005. Testing of failure modes
+The isolation points where these behaviors live are placed by ARCH-005. Application-level fault
+containment (APP-014) is distinct from infrastructure redundancy and single-point-of-failure
+decisions, which are owned by INFRA-017. Testing of failure modes
 required here is governed by TEST-010. Authorization boundaries are owned by `standards/security.md`
 (Phase 3); this standard deliberately defines no authorization rules.
 

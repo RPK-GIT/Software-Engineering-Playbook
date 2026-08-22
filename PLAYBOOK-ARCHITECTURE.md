@@ -79,7 +79,8 @@ engineering-playbook/
 │   ├── how-to-use.md              # Adoption: what an app repo inherits, pinning, precedence recap
 │   ├── change-process.md          # RFC process, versioning, ownership
 │   ├── waivers.md                 # Exception path for MUSTs
-│   └── enforcement-matrix.md      # Every MUST → its CI check or named human gate
+│   ├── enforcement-matrix.md      # Every MUST → its CI check or named human gate
+│   └── rfcs/                      # Accepted RFC records (change-process §3)
 │
 ├── principles/
 │   └── engineering-principles.md
@@ -250,6 +251,7 @@ enforceability varies per rule and is recorded in the enforcement matrix. Scope 
 | Data retention — limits vs mechanism | security.md (SEC-015: limits) / database.md (DB-011: mechanism) | — |
 | Backups & restore & disaster recovery | infrastructure.md (INFRA-022…026) | database.md (deliberately defines no backup rules) |
 | Overload/capacity protection vs abuse protection | infrastructure.md (INFRA-014: capacity) / security.md (SEC-023: abuse) | — mechanisms may coincide; requirements are distinct |
+| Resilience — application-level failure handling (timeouts, retries, circuit breaking, fault containment) | application.md (APP-003…005, APP-013, APP-014) | infrastructure.md (INFRA-017 owns infrastructure redundancy/SPOF decisions) |
 | Deployment & release process | ci-cd.md (CI-003…012) | git.md (GIT-010 tags), operations.md (OPS-009 records) |
 | Telemetry existence vs operational use | observability.md (what signals exist) / operations.md (how they are operated) | — |
 | Incident process & severity model | operations.md (OPS-006…008, §2) | security.md (SEC-011 runs in parallel for exposures) |

@@ -12,6 +12,10 @@ project-level ADRs live in each project repository. ADRs are superseded, never e
 library interface, configuration) invalid: removing or renaming an element, changing its type or
 semantics, tightening what is accepted, or loosening what is returned.
 
+**Circuit breaking** — A failure-handling mechanism that monitors calls to a dependency, suspends
+further calls once failures persist past a defined threshold, and restores normal calling only
+after a controlled probe call succeeds (APP-013).
+
 **Correlation identifier** — The identifier assigned to one unit of work at its entry point and
 carried by all telemetry and cross-boundary calls belonging to it (OBS-003/004).
 
@@ -30,6 +34,9 @@ add strictness but never relax a requirement (RULE-009).
 **Enforcement tag** — Classification of how a rule is verified: `ci` (pipeline check), `review`
 (named human gate), or `manual` (process obligation). Defined in
 [standards/_rule-format.md](standards/_rule-format.md) §2.
+
+**Fault containment** — Limiting the blast radius of a failure so that components or features not
+depending on the failed element remain operational (APP-014).
 
 **Gate** — A defined moment in the delivery lifecycle where compliance is checked (PR opened,
 first deploy, incident declared). Each gate has a checklist that cites the rule IDs applying at

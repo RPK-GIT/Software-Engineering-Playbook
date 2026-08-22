@@ -31,6 +31,7 @@
 ## When runtime behavior is involved (external calls, state, config)
 
 - [ ] External calls have timeouts; retries bounded; retried operations idempotent — APP-004, APP-005, APP-006
+- [ ] Persistent dependency failure sheds calls; feature failure contained to the feature — APP-013, APP-014
 - [ ] Multi-write operations atomic or compensated — APP-007
 - [ ] New config keys: in the tracked template, documented, validated at startup — REPO-004, DOC-005, APP-002
 - [ ] New feature flags: safe default, owner, removal condition — APP-011, APP-012

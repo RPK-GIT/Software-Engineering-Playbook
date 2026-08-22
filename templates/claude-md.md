@@ -13,7 +13,7 @@ as shown. Delete all comments.
 ```yaml
 playbook:
   repository: https://github.com/RPK-GIT/Software-Engineering-Playbook
-  version: v4.0.0            # pinned tag - upgrades are deliberate PRs (how-to-use.md §3)
+  version: v4.1.0            # pinned tag - upgrades are deliberate PRs (how-to-use.md §3)
   profile: [web, api-service, uses-database]   # tags from standards/_rule-format.md §4
 ```
 

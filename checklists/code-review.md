@@ -28,6 +28,7 @@
 - [ ] No swallowed errors; errors carry diagnostic context — CODE-005, CODE-006
 - [ ] Resources released on all paths — CODE-013
 - [ ] Timeouts, bounded retries, idempotency where execution can repeat — APP-004, APP-005, APP-006
+- [ ] Persistent dependency failure sheds calls; feature failure contained to the feature — APP-013, APP-014
 - [ ] Multi-write atomicity or compensation — APP-007
 - [ ] Invariants enforced in the domain layer, not just the interface — APP-008
 - [ ] Concurrent access to shared state is safe — APP-010

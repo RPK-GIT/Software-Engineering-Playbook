@@ -26,6 +26,7 @@
 | `governance/change-process.md` | 1 | Yes | ✅ | RFC flow, playbook versioning, ownership, review cadence, self-validation capabilities |
 | `governance/waivers.md` | 1 | Yes | ✅ | Exception path for MUST rules: approval, format, expiry, register |
 | `governance/enforcement-matrix.md` | 2 | Yes | ✅ | Every rule → gate, automatability class, blocking status (generated from rule blocks) |
+| `governance/rfcs/0001-circuit-breaking-and-fault-containment.md` | — | No | ✅ | Accepted RFC: adds APP-013/APP-014 (v4.1.0) |
 
 ## principles/
 
@@ -40,7 +41,7 @@
 | `standards/_rule-format.md` (RULE) | 1 | Yes | ✅ | Meta-standard: rule grammar — IDs, levels, enforcement, applicability registries |
 | `standards/architecture.md` (ARCH) | 2 | Yes | ✅ | Layering, boundaries, dependency direction, data ownership, when-to-split (9 rules) |
 | `standards/coding.md` (CODE) | 2 | Yes | ✅ | Language-agnostic construction rules, dependency selection (14 rules) |
-| `standards/application.md` (APP) | 2 | Yes | ✅ | Cross-platform runtime: config, failure modes, idempotency, flags (12 rules) |
+| `standards/application.md` (APP) | 2 | Yes | ✅ | Cross-platform runtime: config, failure modes, resilience, idempotency, flags (14 rules) |
 | `standards/testing.md` (TEST) | 2 | Yes | ✅ | Test levels, determinism, isolation, flake policy, coverage mechanism (14 rules) |
 | `standards/git.md` (GIT) | 2 | Yes | ✅ | Branching, protection, commits, PR flow, releases, reverts (12 rules) |
 | `standards/repository.md` (REPO) | 2 | Yes | ✅ | Required files, tracked-vs-untracked boundary, lockfiles, ownership (10 rules) |
@@ -96,9 +97,9 @@
 
 ---
 
-**Totals:** 46 active documents (6 root + 4 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
-**Phase 6 complete (2026-08-11) — ALL PLANNED PHASES DONE:** 47 active documents (46 ✅ + 1 🧊
-trigger-gated mobile stub); 263 normative rules across 17 rule-bearing documents; 6 accepted
+**Totals:** 47 active documents (6 root + 5 governance + 1 principles + 17 standards + 2 agents + 2 decisions + 6 checklists + 8 templates), plus 1 superseded design document retained as history.
+**Phase 6 complete (2026-08-11) — ALL PLANNED PHASES DONE; v4.1.0 (2026-08-22) added APP-013/014 via RFC-0001:** 48 active documents (47 ✅ + 1 🧊
+trigger-gated mobile stub); 265 normative rules across 17 rule-bearing documents; 6 accepted
 policies, 0 pending. Self-CI: `tools/validate.py` (V1–V15, blocking) + `tools/gen_matrix.py`
 (matrix generation/drift), run locally and as required repository CI on the platform selected in
 [ADR-0002](decisions/0002-github-actions-for-playbook-self-ci.md)
